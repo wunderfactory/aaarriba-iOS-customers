@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="70" y="63"/>
         </scene>
-        <!--Pricing View Controller - Item 1-->
+        <!--Pricing View Controller - Preise-->
         <scene sceneID="Zpo-Zg-aqc">
             <objects>
                 <viewController id="Em3-zt-akh" customClass="PricingViewController" sceneMemberID="viewController">
@@ -63,11 +63,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="ANu-CS-9J4"/>
+                    <tabBarItem key="tabBarItem" title="Preise" id="ANu-CS-9J4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj9-9M-Ws2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="449"/>
+            <point key="canvasLocation" x="604" y="-375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3oY-u9-Dgj">
@@ -81,11 +81,71 @@
                     </tabBar>
                     <connections>
                         <segue destination="Em3-zt-akh" kind="relationship" relationship="viewControllers" id="hAj-au-kCj"/>
+                        <segue destination="2EZ-v6-qGQ" kind="relationship" relationship="viewControllers" id="oPj-yV-URn"/>
+                        <segue destination="BPg-Bj-rhx" kind="relationship" relationship="viewControllers" id="f48-v3-AyK"/>
+                        <segue destination="4tM-WR-Ctk" kind="relationship" relationship="viewControllers" id="yEg-iM-gIU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evv-LO-Xpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="70" y="775"/>
+        </scene>
+        <!--View Controller - Konto-->
+        <scene sceneID="7ae-uV-VeY">
+            <objects>
+                <viewController id="4tM-WR-Ctk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z8B-1B-6fp"/>
+                        <viewControllerLayoutGuide type="bottom" id="eGh-ya-Jb1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WMg-Yy-jIO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Konto" id="ZQs-uC-Idt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2uD-Bt-HlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="1811"/>
+        </scene>
+        <!--View Controller - Verlauf-->
+        <scene sceneID="byG-87-qMj">
+            <objects>
+                <viewController id="BPg-Bj-rhx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OLx-7a-aab"/>
+                        <viewControllerLayoutGuide type="bottom" id="KQi-uM-UAY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cye-aN-fUr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Verlauf" id="Ljk-5T-Wca"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8w3-EF-AvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="1098"/>
+        </scene>
+        <!--View Controller - Paketverfolgung-->
+        <scene sceneID="Flr-5v-vKz">
+            <objects>
+                <viewController id="2EZ-v6-qGQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Wg-Wl-whd"/>
+                        <viewControllerLayoutGuide type="bottom" id="PB1-Ia-foL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JrQ-AG-uUc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Paketverfolgung" id="PxO-r0-DyA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xkx-4g-DqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="333"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -94,6 +154,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jZT-Bz-WEd"/>
+        <segue reference="hAj-au-kCj"/>
     </inferredMetricsTieBreakers>
 </document>

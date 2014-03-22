@@ -10,4 +10,12 @@
 
 @interface PricingViewController : UIViewController
 
+
+#pragma -
+#pragma Methods
+
+- (void)loadPricingData;
+
+
+
 @end

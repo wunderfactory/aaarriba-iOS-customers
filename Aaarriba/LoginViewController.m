@@ -56,6 +56,8 @@
 
 - (IBAction)loginButtonAction:(id)sender {
     
+    
+    // if login response is YES
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"userIsLoggedIn"];
     
     [self performSegueWithIdentifier:@"loginToPricingViewController" sender:self];

@@ -38,6 +38,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    [self loadPricingData];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+#pragma Methods
+
+- (void)loadPricingData
+{
     zehnKGDictionary = [zehnKGDictionary initWithObjectsAndKeys:
                         @"14,78", @"5km",
                         @"21,42", @"10km",
@@ -50,44 +66,40 @@
                         nil];
     
     zwanzigKGDictionary = [zwanzigKGDictionary initWithObjectsAndKeys:
-                        @"16,06", @"5km",
-                        @"22,61", @"10km",
-                        @"29,75", @"15km",
-                        @"37,48", @"20km",
-                        @"45,81", @"25km",
-                        @"52,95", @"30km",
-                        @"60,09", @"35km",
-                        @"8,50", @"grundpreis",
-                        nil];
-    
-    dreissigKGDictionary = [dreissigKGDictionary initWithObjectsAndKeys:
-                           @"23,80", @"5km",
-                           @"32,13", @"10km",
-                           @"41,05", @"15km",
-                           @"49,98", @"20km",
-                           @"59,50", @"25km",
-                           @"67,83", @"30km",
-                           @"76,16", @"35km",
-                           @"15,00", @"grundpreis",
+                           @"16,06", @"5km",
+                           @"22,61", @"10km",
+                           @"29,75", @"15km",
+                           @"37,48", @"20km",
+                           @"45,81", @"25km",
+                           @"52,95", @"30km",
+                           @"60,09", @"35km",
+                           @"8,50", @"grundpreis",
                            nil];
     
-    vierzigKGDictionary = [vierzigKGDictionary initWithObjectsAndKeys:
-                            @"35,70", @"5km",
-                            @"44,03", @"10km",
-                            @"52,95", @"15km",
-                            @"61,88", @"20km",
-                            @"71,40", @"25km",
-                            @"79,73", @"30km",
-                            @"92,22", @"35km",
-                            @"25,00", @"grundpreis",
+    dreissigKGDictionary = [dreissigKGDictionary initWithObjectsAndKeys:
+                            @"23,80", @"5km",
+                            @"32,13", @"10km",
+                            @"41,05", @"15km",
+                            @"49,98", @"20km",
+                            @"59,50", @"25km",
+                            @"67,83", @"30km",
+                            @"76,16", @"35km",
+                            @"15,00", @"grundpreis",
                             nil];
+    
+    vierzigKGDictionary = [vierzigKGDictionary initWithObjectsAndKeys:
+                           @"35,70", @"5km",
+                           @"44,03", @"10km",
+                           @"52,95", @"15km",
+                           @"61,88", @"20km",
+                           @"71,40", @"25km",
+                           @"79,73", @"30km",
+                           @"92,22", @"35km",
+                           @"25,00", @"grundpreis",
+                           nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation
