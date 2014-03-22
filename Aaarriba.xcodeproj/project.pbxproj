@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184388B118DDA6C300C092D6 /* 10kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AD18DDA6C300C092D6 /* 10kg.png */; };
+		184388B218DDA6C300C092D6 /* 20kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AE18DDA6C300C092D6 /* 20kg.png */; };
+		184388B318DDA6C300C092D6 /* 30kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AF18DDA6C300C092D6 /* 30kg.png */; };
+		184388B418DDA6C300C092D6 /* 40kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388B018DDA6C300C092D6 /* 40kg.png */; };
 		1874B8B918D8AA8D00021B48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874B8B818D8AA8D00021B48 /* Foundation.framework */; };
 		1874B8BB18D8AA8D00021B48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874B8BA18D8AA8D00021B48 /* CoreGraphics.framework */; };
 		1874B8BD18D8AA8D00021B48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874B8BC18D8AA8D00021B48 /* UIKit.framework */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		184388AD18DDA6C300C092D6 /* 10kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10kg.png; sourceTree = "<group>"; };
+		184388AE18DDA6C300C092D6 /* 20kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20kg.png; sourceTree = "<group>"; };
+		184388AF18DDA6C300C092D6 /* 30kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30kg.png; sourceTree = "<group>"; };
+		184388B018DDA6C300C092D6 /* 40kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 40kg.png; sourceTree = "<group>"; };
 		1874B8B518D8AA8D00021B48 /* Aaarriba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aaarriba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1874B8B818D8AA8D00021B48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1874B8BA18D8AA8D00021B48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +90,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184388B518DDA6C600C092D6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				184388B618DDA6CD00C092D6 /* Packet */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		184388B618DDA6CD00C092D6 /* Packet */ = {
+			isa = PBXGroup;
+			children = (
+				184388AD18DDA6C300C092D6 /* 10kg.png */,
+				184388AE18DDA6C300C092D6 /* 20kg.png */,
+				184388AF18DDA6C300C092D6 /* 30kg.png */,
+				184388B018DDA6C300C092D6 /* 40kg.png */,
+			);
+			name = Packet;
+			sourceTree = "<group>";
+		};
 		1874B8AC18D8AA8D00021B48 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +149,7 @@
 				1874B8EE18D8AAAE00021B48 /* LoginViewController.m */,
 				1874B8F018D8AB7200021B48 /* PricingViewController.h */,
 				1874B8F118D8AB7200021B48 /* PricingViewController.m */,
+				184388B518DDA6C600C092D6 /* Images */,
 				1874B8D018D8AA8D00021B48 /* Images.xcassets */,
 				1874B8BF18D8AA8D00021B48 /* Supporting Files */,
 			);
@@ -233,8 +261,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184388B318DDA6C300C092D6 /* 30kg.png in Resources */,
 				1874B8D118D8AA8D00021B48 /* Images.xcassets in Resources */,
 				1874B8C318D8AA8D00021B48 /* InfoPlist.strings in Resources */,
+				184388B218DDA6C300C092D6 /* 20kg.png in Resources */,
+				184388B118DDA6C300C092D6 /* 10kg.png in Resources */,
+				184388B418DDA6C300C092D6 /* 40kg.png in Resources */,
 				1874B8CC18D8AA8D00021B48 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +494,7 @@
 				1874B8E918D8AA8D00021B48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1874B8EA18D8AA8D00021B48 /* Build configuration list for PBXNativeTarget "AaarribaTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +503,7 @@
 				1874B8EC18D8AA8D00021B48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

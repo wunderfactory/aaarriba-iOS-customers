@@ -101,6 +101,23 @@
 
 
 
+- (IBAction)zehnkgButton:(id)sender {
+}
+
+- (IBAction)zwanzigkgButton:(id)sender {
+}
+
+- (IBAction)dreissigkgButton:(id)sender {
+}
+
+- (IBAction)vierzigkgButton:(id)sender {
+}
+
+- (IBAction)kgButton:(id)sender {
+}
+
+
+
 /*
 #pragma mark - Navigation
 
