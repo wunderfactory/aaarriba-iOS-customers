@@ -106,6 +106,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preise" id="ANu-CS-9J4"/>
+                    <connections>
+                        <outlet property="dreissigkgButton" destination="RVE-NP-bss" id="ybf-BA-QDE"/>
+                        <outlet property="vierzigkgButton" destination="YIW-46-ElC" id="an9-6X-s5u"/>
+                        <outlet property="zehnkgButton" destination="uWg-hN-Cdj" id="ZYW-ck-rCO"/>
+                        <outlet property="zwanzigkgButton" destination="mam-Qh-iOK" id="5Ym-fD-fpp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj9-9M-Ws2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

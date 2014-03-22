@@ -20,7 +20,7 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton;
 
 
 
@@ -102,19 +102,57 @@
 
 
 - (IBAction)zehnkgButton:(id)sender {
+    zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+    dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+    vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        zehnkgButton.frame = CGRectMake(95, 50, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+        zwanzigkgButton.frame = CGRectMake(325, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+        dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+        vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    }];
 }
 
 - (IBAction)zwanzigkgButton:(id)sender {
+    zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+    dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+    vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        zehnkgButton.frame = CGRectMake(-135, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+        zwanzigkgButton.frame = CGRectMake(95, 50, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+        dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+        vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    }];
 }
 
 - (IBAction)dreissigkgButton:(id)sender {
+    zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+    zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+    vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        zehnkgButton.frame = CGRectMake(-135, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+        zwanzigkgButton.frame = CGRectMake(325, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+        dreissigkgButton.frame = CGRectMake(95, 50, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+        vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    }];
 }
 
 - (IBAction)vierzigkgButton:(id)sender {
+    zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+    zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+    dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        zehnkgButton.frame = CGRectMake(-135, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+        zwanzigkgButton.frame = CGRectMake(325, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+        dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+        vierzigkgButton.frame = CGRectMake(95, 50, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    }];
 }
 
-- (IBAction)kgButton:(id)sender {
-}
 
 
 
