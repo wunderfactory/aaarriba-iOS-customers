@@ -15,8 +15,11 @@
 #pragma Methods
 
 - (void)loadPricingData;
+- (void)createContents;
 
 
+
+#pragma Packet size
 
 - (IBAction)zehnkgButton:(id)sender;
 - (IBAction)zwanzigkgButton:(id)sender;
@@ -27,6 +30,28 @@
 @property (weak, nonatomic) IBOutlet UIButton *zwanzigkgButton;
 @property (weak, nonatomic) IBOutlet UIButton *dreissigkgButton;
 @property (weak, nonatomic) IBOutlet UIButton *vierzigkgButton;
+
+
+- (IBAction)resetAnimationButton:(id)sender;
+
+
+
+
+
+
+#pragma Locate user
+
+@property (weak, nonatomic) IBOutlet UITextField *packetRouteBeginTextField;
+@property (weak, nonatomic) IBOutlet UITextField *packetRouteEndTextField;
+- (IBAction)packetRouteBeginTextField:(id)sender;
+- (IBAction)packetRouteEndTextField:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *locateStartButton;
+@property (weak, nonatomic) IBOutlet UIButton *locateEndButton;
+- (IBAction)locateStartButton:(id)sender;
+- (IBAction)locateEndButton:(id)sender;
+
+
 
 
 @end

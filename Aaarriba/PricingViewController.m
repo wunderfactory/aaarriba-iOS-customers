@@ -8,7 +8,7 @@
 
 #import "PricingViewController.h"
 
-@interface PricingViewController ()
+@interface PricingViewController () <UITextViewDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *zehnKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *zwanzigKGDictionary;
@@ -20,7 +20,15 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField;
+
+
+
+
+
+// 1. Paket Buttons müssen mit Text aus der Datenbank geladen werden - im Moment sind es noch Bilder
+
+
 
 
 
@@ -33,6 +41,12 @@
     return self;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self createContents];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,6 +55,7 @@
     
     [self loadPricingData];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -100,8 +115,32 @@
 }
 
 
+- (void)createContents
+{
+    [packetRouteBeginTextField setHidden:YES];
+    [packetRouteEndTextField setHidden:YES];
+    
+    [locateStartButton setHidden:YES];
+    [locateEndButton setHidden:YES];
+}
+
+
+
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [packetRouteBeginTextField resignFirstResponder];
+    [packetRouteEndTextField resignFirstResponder];
+}
+
+
+
+
+
 
 - (IBAction)zehnkgButton:(id)sender {
+    
     zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
     dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
     vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
@@ -112,9 +151,13 @@
         dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
         vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
     }];
+    
+    [packetRouteBeginTextField setHidden:NO];
+    [packetRouteEndTextField setHidden:NO];
 }
 
 - (IBAction)zwanzigkgButton:(id)sender {
+    
     zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
     dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
     vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
@@ -125,9 +168,13 @@
         dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
         vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
     }];
+    
+    [packetRouteBeginTextField setHidden:NO];
+    [packetRouteEndTextField setHidden:NO];
 }
 
 - (IBAction)dreissigkgButton:(id)sender {
+    
     zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
     zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
     vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
@@ -138,9 +185,13 @@
         dreissigkgButton.frame = CGRectMake(95, 50, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
         vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
     }];
+    
+    [packetRouteBeginTextField setHidden:NO];
+    [packetRouteEndTextField setHidden:NO];
 }
 
 - (IBAction)vierzigkgButton:(id)sender {
+    
     zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
     zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
     dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
@@ -151,7 +202,57 @@
         dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
         vierzigkgButton.frame = CGRectMake(95, 50, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
     }];
+    
+    [packetRouteBeginTextField setHidden:NO];
+    [packetRouteEndTextField setHidden:NO];
 }
+
+
+
+- (IBAction)resetAnimationButton:(id)sender {
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
+        zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
+        dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
+        vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
+    }];
+    
+    [packetRouteBeginTextField setHidden:YES];
+    [packetRouteEndTextField setHidden:YES];
+    
+    [locateStartButton setHidden:YES];
+    [locateEndButton setHidden:YES];
+}
+
+
+
+
+
+- (IBAction)packetRouteBeginTextField:(id)sender {
+    
+    [locateStartButton setHidden:NO];
+    [locateEndButton setHidden:YES];
+}
+
+- (IBAction)packetRouteEndTextField:(id)sender {
+    
+    [locateStartButton setHidden:YES];
+    [locateEndButton setHidden:NO];
+}
+
+
+
+
+
+- (IBAction)locateStartButton:(id)sender {
+    
+    
+}
+
+- (IBAction)locateEndButton:(id)sender {
+}
+
 
 
 
@@ -166,5 +267,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

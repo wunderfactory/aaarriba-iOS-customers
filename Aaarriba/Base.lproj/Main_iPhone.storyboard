@@ -102,12 +102,72 @@
                                     <action selector="zwanzigkgButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="H8i-m1-x7v"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cC-Sl-rzF">
+                                <rect key="frame" x="0.0" y="9" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Preisliste" id="vsJ-LA-54V"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-yn-yj5">
+                                <rect key="frame" x="20" y="53" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Zurück">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetAnimationButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="Qud-Bo-C5H"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Von:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riB-S4-doh">
+                                <rect key="frame" x="24" y="241" width="248" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="packetRouteBeginTextField:" destination="Em3-zt-akh" eventType="editingDidBegin" id="yVX-vZ-Z3z"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nach:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOe-hY-kbo">
+                                <rect key="frame" x="24" y="279" width="248" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="packetRouteEndTextField:" destination="Em3-zt-akh" eventType="editingDidBegin" id="XXQ-zB-Ey0"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-eh-bA9">
+                                <rect key="frame" x="277" y="242" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="locate.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locateStartButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="gyd-B6-Ldn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE2-Ef-zzd">
+                                <rect key="frame" x="277" y="280" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="locate.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locateEndButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="Kcx-zJ-HjW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preise" id="ANu-CS-9J4"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="dreissigkgButton" destination="RVE-NP-bss" id="ybf-BA-QDE"/>
+                        <outlet property="locateEndButton" destination="mE2-Ef-zzd" id="te7-jo-Cxc"/>
+                        <outlet property="locateStartButton" destination="BwN-eh-bA9" id="14S-Gk-vh6"/>
+                        <outlet property="packetRouteBeginTextField" destination="riB-S4-doh" id="WCW-Kd-aeG"/>
+                        <outlet property="packetRouteEndTextField" destination="ZOe-hY-kbo" id="e9s-qW-JlF"/>
                         <outlet property="vierzigkgButton" destination="YIW-46-ElC" id="an9-6X-s5u"/>
                         <outlet property="zehnkgButton" destination="uWg-hN-Cdj" id="ZYW-ck-rCO"/>
                         <outlet property="zwanzigkgButton" destination="mam-Qh-iOK" id="5Ym-fD-fpp"/>
@@ -201,6 +261,7 @@
         <image name="20kg.png" width="200" height="200"/>
         <image name="30kg.png" width="200" height="200"/>
         <image name="40kg.png" width="200" height="200"/>
+        <image name="locate.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

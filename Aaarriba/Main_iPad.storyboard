@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Sa3-AR-fSS">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Pricing View Controller - Preise-->
+        <scene sceneID="QZm-Aj-PWN">
+            <objects>
+                <viewController id="Sa3-AR-fSS" customClass="PricingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="97x-2R-gmP"/>
+                        <viewControllerLayoutGuide type="bottom" id="t5k-Yu-mrk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HKq-SC-P0w">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVM-Ru-rPe">
+                                <rect key="frame" x="24" y="164" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="10kg.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="zehnkgButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="nbY-fA-iTS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlu-sp-rnc">
+                                <rect key="frame" x="175" y="279" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="40kg.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="vierzigkgButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="GoJ-9p-eaA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvH-kX-xdR">
+                                <rect key="frame" x="24" y="279" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="30kg.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dreissigkgButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="aYL-GI-Vn0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9M-es-BGW">
+                                <rect key="frame" x="175" y="164" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="20kg.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="zwanzigkgButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="J9Y-P2-88Y"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL1-vP-SXm">
+                                <rect key="frame" x="0.0" y="9" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Preisliste" id="LQ0-gb-l4i"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEE-IK-SHj">
+                                <rect key="frame" x="20" y="53" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Zurück">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetAnimationButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="7R9-2n-SP2"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Von:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZw-oq-SVn">
+                                <rect key="frame" x="24" y="241" width="248" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="packetRouteBeginTextField:" destination="Sa3-AR-fSS" eventType="editingDidBegin" id="9gF-rb-XXC"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nach:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o0c-Xc-FP7">
+                                <rect key="frame" x="24" y="279" width="248" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="packetRouteEndTextField:" destination="Sa3-AR-fSS" eventType="editingDidBegin" id="ldQ-cC-Vr8"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSx-Bu-EUJ">
+                                <rect key="frame" x="277" y="242" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="locate.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locateStartButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="H5E-4f-3E4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yac-Kh-EJi">
+                                <rect key="frame" x="277" y="280" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="locate.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locateEndButton:" destination="Sa3-AR-fSS" eventType="touchUpInside" id="Z3y-uG-Zoh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Preise" id="0hd-oe-iP4"/>
+                    <connections>
+                        <outlet property="dreissigkgButton" destination="dvH-kX-xdR" id="huL-pt-kZt"/>
+                        <outlet property="locateEndButton" destination="Yac-Kh-EJi" id="sfv-jT-sp7"/>
+                        <outlet property="locateStartButton" destination="sSx-Bu-EUJ" id="ABA-GA-AMZ"/>
+                        <outlet property="packetRouteBeginTextField" destination="wZw-oq-SVn" id="FgI-eY-2Ba"/>
+                        <outlet property="packetRouteEndTextField" destination="o0c-Xc-FP7" id="xmv-h3-keK"/>
+                        <outlet property="vierzigkgButton" destination="Rlu-sp-rnc" id="vYI-Qn-Kbn"/>
+                        <outlet property="zehnkgButton" destination="EVM-Ru-rPe" id="DiV-XN-c72"/>
+                        <outlet property="zwanzigkgButton" destination="U9M-es-BGW" id="w0P-gQ-7ex"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSA-iE-ieS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="598" y="-355"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="10kg.png" width="200" height="200"/>
+        <image name="20kg.png" width="200" height="200"/>
+        <image name="30kg.png" width="200" height="200"/>
+        <image name="40kg.png" width="200" height="200"/>
+        <image name="locate.png" width="32" height="32"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
