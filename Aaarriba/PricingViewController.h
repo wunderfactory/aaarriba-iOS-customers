@@ -46,11 +46,16 @@
 - (IBAction)packetRouteBeginTextField:(id)sender;
 - (IBAction)packetRouteEndTextField:(id)sender;
 
+
 @property (weak, nonatomic) IBOutlet UIButton *locateStartButton;
 @property (weak, nonatomic) IBOutlet UIButton *locateEndButton;
 - (IBAction)locateStartButton:(id)sender;
 - (IBAction)locateEndButton:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *contactsBeginButton;
+@property (weak, nonatomic) IBOutlet UIButton *contactsEndButton;
+- (IBAction)contactsBeginButton:(id)sender;
+- (IBAction)contactsEndButton:(id)sender;
 
 
 

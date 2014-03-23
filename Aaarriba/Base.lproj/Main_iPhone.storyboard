@@ -120,7 +120,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Von:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riB-S4-doh">
-                                <rect key="frame" x="24" y="241" width="248" height="30"/>
+                                <rect key="frame" x="24" y="241" width="209" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -129,7 +129,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nach:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOe-hY-kbo">
-                                <rect key="frame" x="24" y="279" width="248" height="30"/>
+                                <rect key="frame" x="24" y="279" width="209" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -145,6 +145,28 @@
                                 </state>
                                 <connections>
                                     <action selector="locateStartButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="gyd-B6-Ldn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltt-cA-eKd">
+                                <rect key="frame" x="245" y="242" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="adressbook.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="contactsBeginButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="6Jf-O7-Ums"/>
+                                    <action selector="locateStartButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="eui-bU-UcL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YI1-s3-hnI">
+                                <rect key="frame" x="245" y="280" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="adressbook.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="contactsEndButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="7ix-YE-JVP"/>
+                                    <action selector="locateStartButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="EHc-aX-3e5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE2-Ef-zzd">
@@ -163,6 +185,8 @@
                     <tabBarItem key="tabBarItem" title="Preise" id="ANu-CS-9J4"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="contactsBeginButton" destination="Ltt-cA-eKd" id="WVu-BL-6jf"/>
+                        <outlet property="contactsEndButton" destination="YI1-s3-hnI" id="oPO-nx-aWi"/>
                         <outlet property="dreissigkgButton" destination="RVE-NP-bss" id="ybf-BA-QDE"/>
                         <outlet property="locateEndButton" destination="mE2-Ef-zzd" id="te7-jo-Cxc"/>
                         <outlet property="locateStartButton" destination="BwN-eh-bA9" id="14S-Gk-vh6"/>
@@ -171,11 +195,49 @@
                         <outlet property="vierzigkgButton" destination="YIW-46-ElC" id="an9-6X-s5u"/>
                         <outlet property="zehnkgButton" destination="uWg-hN-Cdj" id="ZYW-ck-rCO"/>
                         <outlet property="zwanzigkgButton" destination="mam-Qh-iOK" id="5Ym-fD-fpp"/>
+                        <segue destination="Jgc-B9-PMd" kind="modal" identifier="pricingToMapView" id="kKy-2B-e4i"/>
+                        <segue destination="wKK-jr-SEh" kind="modal" identifier="pricingToAdressbook" id="0Ca-2Y-ioj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj9-9M-Ws2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-375"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ia3-fh-UwP">
+            <objects>
+                <viewController id="wKK-jr-SEh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1QM-5j-VrZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="vm1-tH-C7b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c56-vx-Lix">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6W5-ka-l2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="-82"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8Mf-0U-skb">
+            <objects>
+                <viewController id="Jgc-B9-PMd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CFK-NS-jL8"/>
+                        <viewControllerLayoutGuide type="bottom" id="D8a-7T-RS6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3kQ-cq-k8W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APj-b9-xKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="-775"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3oY-u9-Dgj">
@@ -261,6 +323,7 @@
         <image name="20kg.png" width="200" height="200"/>
         <image name="30kg.png" width="200" height="200"/>
         <image name="40kg.png" width="200" height="200"/>
+        <image name="adressbook.png" width="64" height="64"/>
         <image name="locate.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

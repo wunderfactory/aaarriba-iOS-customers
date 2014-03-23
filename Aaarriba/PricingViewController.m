@@ -244,15 +244,27 @@
 
 
 
-
 - (IBAction)locateStartButton:(id)sender {
     
-    
+    [self performSegueWithIdentifier:@"pricingToMapView" sender:self];
 }
 
 - (IBAction)locateEndButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"pricingToMapView" sender:self];
 }
 
+
+
+- (IBAction)contactsBeginButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"pricingToAdressbook" sender:self];
+}
+
+- (IBAction)contactsEndButton:(id)sender {
+
+    [self performSegueWithIdentifier:@"pricingToAdressbook" sender:self];
+}
 
 
 
@@ -267,7 +279,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 
 
 @end
