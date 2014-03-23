@@ -7,8 +7,9 @@
 //
 
 #import "MapRouteViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface MapRouteViewController ()
+@interface MapRouteViewController () <MKMapViewDelegate>
 
 @end
 
@@ -27,6 +28,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

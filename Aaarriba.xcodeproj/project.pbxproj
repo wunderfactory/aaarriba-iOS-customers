@@ -31,6 +31,7 @@
 		18FAB91018DF3C8200D6125E /* adressbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB90F18DF3C8200D6125E /* adressbook.png */; };
 		18FAB91318DF435500D6125E /* MapRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAB91218DF435500D6125E /* MapRouteViewController.m */; };
 		18FAB91618DF436100D6125E /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAB91518DF436100D6125E /* ContactsViewController.m */; };
+		18FAB91818DF4A1900D6125E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAB91718DF4A1900D6125E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		18FAB91218DF435500D6125E /* MapRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteViewController.m; sourceTree = "<group>"; };
 		18FAB91418DF436100D6125E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		18FAB91518DF436100D6125E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		18FAB91718DF4A1900D6125E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FAB91818DF4A1900D6125E /* MapKit.framework in Frameworks */,
 				1874B8BB18D8AA8D00021B48 /* CoreGraphics.framework in Frameworks */,
 				1874B8BD18D8AA8D00021B48 /* UIKit.framework in Frameworks */,
 				1874B8B918D8AA8D00021B48 /* Foundation.framework in Frameworks */,
@@ -145,6 +148,7 @@
 		1874B8B718D8AA8D00021B48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18FAB91718DF4A1900D6125E /* MapKit.framework */,
 				1874B8B818D8AA8D00021B48 /* Foundation.framework */,
 				1874B8BA18D8AA8D00021B48 /* CoreGraphics.framework */,
 				1874B8BC18D8AA8D00021B48 /* UIKit.framework */,
