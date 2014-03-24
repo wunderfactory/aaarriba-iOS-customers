@@ -7,7 +7,6 @@
 //
 
 #import "MapRouteViewController.h"
-#import <MapKit/MapKit.h>
 
 @interface MapRouteViewController () <MKMapViewDelegate>
 
@@ -30,7 +29,30 @@
     // Do any additional setup after loading the view.
     
     
+    self.locationRouteMapView.delegate = self;
     
+    //Geokoordianten Avanti
+    CLLocationCoordinate2D coordination;
+    coordination.latitude = 54.5432;
+    coordination.longitude = 9.41365;
+    
+    //Set up Region with coordinates
+    MKCoordinateRegion avantiRegion;
+    avantiRegion.center = coordination;
+    avantiRegion.span.latitudeDelta = 10;
+    avantiRegion.span.longitudeDelta = 10;
+    
+    //Set up the pin
+    MKPointAnnotation *coordinationPoint = [[MKPointAnnotation alloc] init];
+    coordinationPoint.coordinate = coordination;
+    coordinationPoint.title = @"Deine Position";
+    
+    //Tell the MapView what to show
+    [self.locationRouteMapView setRegion:avantiRegion animated:YES];
+    [self.locationRouteMapView addAnnotation:coordinationPoint];
+    
+    NSArray *annotationArray = @[coordinationPoint];
+    [self.locationRouteMapView showAnnotations:annotationArray animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

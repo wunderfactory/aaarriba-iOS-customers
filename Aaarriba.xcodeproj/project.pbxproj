@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1814062918E064F0002AA71F /* DPWebConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1814062818E064F0002AA71F /* DPWebConnector.m */; };
 		184388B118DDA6C300C092D6 /* 10kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AD18DDA6C300C092D6 /* 10kg.png */; };
 		184388B218DDA6C300C092D6 /* 20kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AE18DDA6C300C092D6 /* 20kg.png */; };
 		184388B318DDA6C300C092D6 /* 30kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AF18DDA6C300C092D6 /* 30kg.png */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1814062718E064F0002AA71F /* DPWebConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPWebConnector.h; sourceTree = "<group>"; };
+		1814062818E064F0002AA71F /* DPWebConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPWebConnector.m; sourceTree = "<group>"; };
 		184388AD18DDA6C300C092D6 /* 10kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10kg.png; sourceTree = "<group>"; };
 		184388AE18DDA6C300C092D6 /* 20kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20kg.png; sourceTree = "<group>"; };
 		184388AF18DDA6C300C092D6 /* 30kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30kg.png; sourceTree = "<group>"; };
@@ -105,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1814062618E063F4002AA71F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1814062718E064F0002AA71F /* DPWebConnector.h */,
+				1814062818E064F0002AA71F /* DPWebConnector.m */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		184388B518DDA6C600C092D6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +172,7 @@
 		1874B8BE18D8AA8D00021B48 /* Aaarriba */ = {
 			isa = PBXGroup;
 			children = (
+				1814062618E063F4002AA71F /* Frameworks */,
 				1874B8C718D8AA8D00021B48 /* AppDelegate.h */,
 				1874B8C818D8AA8D00021B48 /* AppDelegate.m */,
 				1874B8CA18D8AA8D00021B48 /* Main_iPhone.storyboard */,
@@ -313,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18FAB91318DF435500D6125E /* MapRouteViewController.m in Sources */,
+				1814062918E064F0002AA71F /* DPWebConnector.m in Sources */,
 				18FAB91618DF436100D6125E /* ContactsViewController.m in Sources */,
 				1874B8C918D8AA8D00021B48 /* AppDelegate.m in Sources */,
 				1874B8F218D8AB7200021B48 /* PricingViewController.m in Sources */,

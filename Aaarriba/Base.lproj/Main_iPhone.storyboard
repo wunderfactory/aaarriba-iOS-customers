@@ -43,14 +43,30 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="Xrx-GY-Guv" id="Bbr-l9-gIJ"/>
-                        <segue destination="Em3-zt-akh" kind="modal" identifier="loginToPricingViewController" id="jZT-Bz-WEd"/>
+                        <segue destination="hBp-cL-kvH" kind="modal" identifier="loginToPricingViewController" id="TE9-4o-GGi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul6-8b-Vkw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="70" y="63"/>
         </scene>
-        <!--Pricing View Controller - Preise-->
+        <!--Navigation Controller - Preise-->
+        <scene sceneID="alO-z5-keE">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="hBp-cL-kvH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Preise" id="XWs-BE-cy3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YwC-Wu-5ku">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Em3-zt-akh" kind="relationship" relationship="rootViewController" id="fs1-oT-Psa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oO6-Yo-ffi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="-405"/>
+        </scene>
+        <!--Pricing View Controller - Preisliste-->
         <scene sceneID="Zpo-Zg-aqc">
             <objects>
                 <viewController id="Em3-zt-akh" customClass="PricingViewController" sceneMemberID="viewController">
@@ -102,15 +118,8 @@
                                     <action selector="zwanzigkgButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="H8i-m1-x7v"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cC-Sl-rzF">
-                                <rect key="frame" x="0.0" y="9" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Preisliste" id="vsJ-LA-54V"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-yn-yj5">
-                                <rect key="frame" x="20" y="53" width="48" height="30"/>
+                                <rect key="frame" x="20" y="67" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Zurück">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -183,6 +192,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preise" id="ANu-CS-9J4"/>
+                    <navigationItem key="navigationItem" title="Preisliste" id="KD2-yc-5w2"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="contactsBeginButton" destination="Ltt-cA-eKd" id="WVu-BL-6jf"/>
@@ -195,13 +205,13 @@
                         <outlet property="vierzigkgButton" destination="YIW-46-ElC" id="an9-6X-s5u"/>
                         <outlet property="zehnkgButton" destination="uWg-hN-Cdj" id="ZYW-ck-rCO"/>
                         <outlet property="zwanzigkgButton" destination="mam-Qh-iOK" id="5Ym-fD-fpp"/>
-                        <segue destination="Jgc-B9-PMd" kind="modal" identifier="pricingToMapView" id="kKy-2B-e4i"/>
-                        <segue destination="wKK-jr-SEh" kind="modal" identifier="pricingToAdressbook" id="0Ca-2Y-ioj"/>
+                        <segue destination="Jgc-B9-PMd" kind="push" identifier="pricingToMapView" id="kKy-2B-e4i"/>
+                        <segue destination="wKK-jr-SEh" kind="push" identifier="pricingToAdressbook" id="0Ca-2Y-ioj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj9-9M-Ws2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="-375"/>
+            <point key="canvasLocation" x="1092" y="-405"/>
         </scene>
         <!--Contacts View Controller-->
         <scene sceneID="Ia3-fh-UwP">
@@ -216,10 +226,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="mf9-h9-c2W"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6W5-ka-l2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-82"/>
+            <point key="canvasLocation" x="1634" y="-116"/>
         </scene>
         <!--Map Route View Controller-->
         <scene sceneID="8Mf-0U-skb">
@@ -234,18 +245,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uBd-Fa-HtV">
-                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKb-kX-zX6">
-                                <rect key="frame" x="0.0" y="24" width="320" height="44"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cuc-Hb-Rok">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="d1t-es-3U7"/>
                     <connections>
+                        <outlet property="locationRouteMapView" destination="uBd-Fa-HtV" id="4NP-T0-OdK"/>
                         <outlet property="searchDisplayController" destination="zbI-ER-zs9" id="Td6-gS-8gQ"/>
                     </connections>
                 </viewController>
@@ -259,28 +272,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1146" y="-775"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="3oY-u9-Dgj">
-            <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" definesPresentationContext="YES" id="tuw-8C-BpJ" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="pNx-34-1I3">
-                        <rect key="frame" x="129" y="330" width="163" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Em3-zt-akh" kind="relationship" relationship="viewControllers" id="hAj-au-kCj"/>
-                        <segue destination="2EZ-v6-qGQ" kind="relationship" relationship="viewControllers" id="oPj-yV-URn"/>
-                        <segue destination="BPg-Bj-rhx" kind="relationship" relationship="viewControllers" id="f48-v3-AyK"/>
-                        <segue destination="4tM-WR-Ctk" kind="relationship" relationship="viewControllers" id="yEg-iM-gIU"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="evv-LO-Xpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="70" y="775"/>
+            <point key="canvasLocation" x="1634" y="-809"/>
         </scene>
         <!--View Controller - Konto-->
         <scene sceneID="7ae-uV-VeY">
@@ -301,6 +293,27 @@
             </objects>
             <point key="canvasLocation" x="604" y="1811"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="sJV-kX-0yt">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarController" definesPresentationContext="YES" id="eSr-y9-9ld" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="pb0-Bw-DoB">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hBp-cL-kvH" kind="relationship" relationship="viewControllers" id="9gN-l0-QRc"/>
+                        <segue destination="2EZ-v6-qGQ" kind="relationship" relationship="viewControllers" id="A4Z-We-VJv"/>
+                        <segue destination="BPg-Bj-rhx" kind="relationship" relationship="viewControllers" id="7iE-Tf-Vnp"/>
+                        <segue destination="4tM-WR-Ctk" kind="relationship" relationship="viewControllers" id="jQY-G7-MzO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tps-S7-7Pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70" y="1098"/>
+        </scene>
         <!--View Controller - Verlauf-->
         <scene sceneID="byG-87-qMj">
             <objects>
@@ -320,7 +333,7 @@
             </objects>
             <point key="canvasLocation" x="604" y="1098"/>
         </scene>
-        <!--View Controller - Paketverfolgung-->
+        <!--View Controller-->
         <scene sceneID="Flr-5v-vKz">
             <objects>
                 <viewController id="2EZ-v6-qGQ" sceneMemberID="viewController">
@@ -333,11 +346,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Paketverfolgung" id="PxO-r0-DyA"/>
+                    <tabBarItem key="tabBarItem" id="PxO-r0-DyA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkx-4g-DqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="333"/>
+            <point key="canvasLocation" x="612" y="333"/>
         </scene>
     </scenes>
     <resources>
@@ -354,6 +367,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jZT-Bz-WEd"/>
+        <segue reference="9gN-l0-QRc"/>
     </inferredMetricsTieBreakers>
 </document>
