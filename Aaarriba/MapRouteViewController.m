@@ -8,11 +8,22 @@
 
 #import "MapRouteViewController.h"
 
-@interface MapRouteViewController () <MKMapViewDelegate>
+@interface MapRouteViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+
+@property (nonatomic, strong) CLLocationManager *userStartLocationManager;
+@property (nonatomic, strong, readwrite) CLLocation *userStartLocation;
+
+@property BOOL getLocation;
 
 @end
 
+
+
 @implementation MapRouteViewController
+
+@synthesize userStartLocation, userStartLocationManager, getLocation;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,29 +41,19 @@
     
     
     self.locationRouteMapView.delegate = self;
+    //self.locationRouteMapView.showsUserLocation = YES;
     
-    //Geokoordianten Avanti
-    CLLocationCoordinate2D coordination;
-    coordination.latitude = 54.5432;
-    coordination.longitude = 9.41365;
+    userStartLocationManager = [[CLLocationManager alloc] init];
+    userStartLocationManager.delegate = self;
+    userStartLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    userStartLocationManager.distanceFilter = kCLDistanceFilterNone;
     
-    //Set up Region with coordinates
-    MKCoordinateRegion avantiRegion;
-    avantiRegion.center = coordination;
-    avantiRegion.span.latitudeDelta = 10;
-    avantiRegion.span.longitudeDelta = 10;
+    [userStartLocationManager startUpdatingLocation];
     
-    //Set up the pin
-    MKPointAnnotation *coordinationPoint = [[MKPointAnnotation alloc] init];
-    coordinationPoint.coordinate = coordination;
-    coordinationPoint.title = @"Deine Position";
     
-    //Tell the MapView what to show
-    [self.locationRouteMapView setRegion:avantiRegion animated:YES];
-    [self.locationRouteMapView addAnnotation:coordinationPoint];
-    
-    NSArray *annotationArray = @[coordinationPoint];
-    [self.locationRouteMapView showAnnotations:annotationArray animated:YES];
+    UILongPressGestureRecognizer *longGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longGestureRecognizer.minimumPressDuration = 1.0;
+    [self.locationRouteMapView addGestureRecognizer:longGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,15 +62,49 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        
+        CGPoint touchPoint = [gestureRecognizer locationInView:self.locationRouteMapView];
+        CLLocationCoordinate2D touchMapCoordinate = [self.locationRouteMapView convertPoint:touchPoint toCoordinateFromView:self.locationRouteMapView];
+        
+        MKCoordinateRegion startRegion;
+        startRegion.center = touchMapCoordinate;
+        startRegion.span.latitudeDelta = 0.2;
+        startRegion.span.longitudeDelta = 0.2;
+        
+        MKPointAnnotation *startAnnotation = [[MKPointAnnotation alloc] init];
+        startAnnotation.coordinate = touchMapCoordinate;
+        startAnnotation.title = @"[Adresse";
+        
+        
+        [self.locationRouteMapView setRegion:startRegion animated:YES];
+        
+        NSArray *annotationArray = @[startAnnotation];
+        [self.locationRouteMapView addAnnotations:annotationArray];
+        
+    }
 }
-*/
+
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    userStartLocation = [locations lastObject];
+    
+    NSArray *locationArray = @[userStartLocation];
+    [self.locationRouteMapView showAnnotations:locationArray animated:YES];
+    
+    float userStartCoordinateLatitude = userStartLocation.coordinate.latitude;
+    float userStartCoordinateLongitude = userStartLocation.coordinate.longitude;
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:userStartCoordinateLatitude forKey:@"userStartLocationLatitude"];
+    [[NSUserDefaults standardUserDefaults] setInteger:userStartCoordinateLongitude forKey:@"userStartLocationLongitude"];
+}
+
+
+
 
 @end

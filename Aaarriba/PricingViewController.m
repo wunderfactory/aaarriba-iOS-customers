@@ -247,11 +247,13 @@
 - (IBAction)locateStartButton:(id)sender {
     
     [self performSegueWithIdentifier:@"pricingToMapView" sender:self];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"startButtonTappedToMapView"];
 }
 
 - (IBAction)locateEndButton:(id)sender {
     
     [self performSegueWithIdentifier:@"pricingToMapView" sender:self];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"startButtonTappedToMapView"];
 }
 
 

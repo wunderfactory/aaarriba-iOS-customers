@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808CC1418E179B500973BED /* CoreLocation.framework */; };
 		1814062918E064F0002AA71F /* DPWebConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1814062818E064F0002AA71F /* DPWebConnector.m */; };
 		184388B118DDA6C300C092D6 /* 10kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AD18DDA6C300C092D6 /* 10kg.png */; };
 		184388B218DDA6C300C092D6 /* 20kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AE18DDA6C300C092D6 /* 20kg.png */; };
@@ -27,6 +28,7 @@
 		1874B8E418D8AA8D00021B48 /* AaarribaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874B8E318D8AA8D00021B48 /* AaarribaTests.m */; };
 		1874B8EF18D8AAAE00021B48 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874B8EE18D8AAAE00021B48 /* LoginViewController.m */; };
 		1874B8F218D8AB7200021B48 /* PricingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874B8F118D8AB7200021B48 /* PricingViewController.m */; };
+		18883D2818E30DDB00459AFF /* MapRouteEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */; };
 		18CC269E18DF2EB200A97936 /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC269D18DF2EB200A97936 /* locate.png */; };
 		18FAB90C18DF329F00D6125E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB90B18DF329F00D6125E /* Main_iPad.storyboard */; };
 		18FAB91018DF3C8200D6125E /* adressbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB90F18DF3C8200D6125E /* adressbook.png */; };
@@ -46,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1808CC1418E179B500973BED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1814062718E064F0002AA71F /* DPWebConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPWebConnector.h; sourceTree = "<group>"; };
 		1814062818E064F0002AA71F /* DPWebConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPWebConnector.m; sourceTree = "<group>"; };
 		184388AD18DDA6C300C092D6 /* 10kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10kg.png; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 		1874B8EE18D8AAAE00021B48 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1874B8F018D8AB7200021B48 /* PricingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PricingViewController.h; sourceTree = "<group>"; };
 		1874B8F118D8AB7200021B48 /* PricingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricingViewController.m; sourceTree = "<group>"; };
+		18883D2618E30DDB00459AFF /* MapRouteEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRouteEndViewController.h; sourceTree = "<group>"; };
+		18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteEndViewController.m; sourceTree = "<group>"; };
 		18CC269D18DF2EB200A97936 /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
 		18FAB90B18DF329F00D6125E /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		18FAB90F18DF3C8200D6125E /* adressbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adressbook.png; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */,
 				18FAB91818DF4A1900D6125E /* MapKit.framework in Frameworks */,
 				1874B8BB18D8AA8D00021B48 /* CoreGraphics.framework in Frameworks */,
 				1874B8BD18D8AA8D00021B48 /* UIKit.framework in Frameworks */,
@@ -160,6 +166,7 @@
 		1874B8B718D8AA8D00021B48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1808CC1418E179B500973BED /* CoreLocation.framework */,
 				18FAB91718DF4A1900D6125E /* MapKit.framework */,
 				1874B8B818D8AA8D00021B48 /* Foundation.framework */,
 				1874B8BA18D8AA8D00021B48 /* CoreGraphics.framework */,
@@ -183,6 +190,8 @@
 				1874B8F118D8AB7200021B48 /* PricingViewController.m */,
 				18FAB91118DF435500D6125E /* MapRouteViewController.h */,
 				18FAB91218DF435500D6125E /* MapRouteViewController.m */,
+				18883D2618E30DDB00459AFF /* MapRouteEndViewController.h */,
+				18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */,
 				18FAB91418DF436100D6125E /* ContactsViewController.h */,
 				18FAB91518DF436100D6125E /* ContactsViewController.m */,
 				184388B518DDA6C600C092D6 /* Images */,
@@ -326,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18FAB91318DF435500D6125E /* MapRouteViewController.m in Sources */,
+				18883D2818E30DDB00459AFF /* MapRouteEndViewController.m in Sources */,
 				1814062918E064F0002AA71F /* DPWebConnector.m in Sources */,
 				18FAB91618DF436100D6125E /* ContactsViewController.m in Sources */,
 				1874B8C918D8AA8D00021B48 /* AppDelegate.m in Sources */,
