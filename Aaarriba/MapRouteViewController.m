@@ -8,7 +8,7 @@
 
 #import "MapRouteViewController.h"
 
-@interface MapRouteViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface MapRouteViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) CLLocationManager *userStartLocationManager;
 @property (nonatomic, strong) CLLocation *userStartLocation;
@@ -40,6 +40,7 @@
     // Do any additional setup after loading the view.
     
     
+    self.addressSearchBar.delegate = self;
     self.locationRouteMapView.delegate = self;
     //self.locationRouteMapView.showsUserLocation = YES;
     
@@ -48,14 +49,16 @@
     userStartLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
     userStartLocationManager.distanceFilter = kCLDistanceFilterNone;
     
-    [userStartLocationManager startUpdatingLocation];
+    
 
     UITapGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     touchGesture.numberOfTapsRequired = 1;
     
     
-    //UILongPressGestureRecognizer *longGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    //longGestureRecognizer.minimumPressDuration = 0.1;
+    UIBarButtonItem *locateItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"10kg.png"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(locateUserOnMapView)];
+    self.navigationItem.rightBarButtonItems = @[locateItem];
+    
+    
     [self.locationRouteMapView addGestureRecognizer:touchGesture];
 }
 
@@ -89,6 +92,14 @@
 
 
 
+
+
+- (void)locateUserOnMapView
+{
+    [userStartLocationManager startUpdatingLocation];
+}
+
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     userStartLocation = [locations lastObject];
@@ -96,25 +107,24 @@
     NSArray *locationArray = @[userStartLocation];
     [self.locationRouteMapView showAnnotations:locationArray animated:YES];
     
-    float userStartCoordinateLatitude = userStartLocation.coordinate.latitude;
-    float userStartCoordinateLongitude = userStartLocation.coordinate.longitude;
-    
-    [[NSUserDefaults standardUserDefaults] setInteger:userStartCoordinateLatitude forKey:@"userStartLocationLatitude"];
-    [[NSUserDefaults standardUserDefaults] setInteger:userStartCoordinateLongitude forKey:@"userStartLocationLongitude"];
+    [userStartLocationManager stopUpdatingLocation];
 }
 
 
 
 
-- (IBAction)actionButton:(id)sender {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *addressString = self.addressSearchBar.text;
+    
     
     CLGeocoder *startAdressGeocoder = [[CLGeocoder alloc] init];
-    [startAdressGeocoder geocodeAddressString:@"Am Rosengarten 7, Kassel" completionHandler:^(NSArray *placemarks, NSError *error) {
+    [startAdressGeocoder geocodeAddressString:addressString completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *topResult = [placemarks objectAtIndex:0];
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-        
         
         [self.locationRouteMapView addAnnotation:placemark];
     }];
 }
+
 @end

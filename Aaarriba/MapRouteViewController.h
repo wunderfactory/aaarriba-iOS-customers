@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *locationRouteMapView;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *addressSearchBar;
 
-- (IBAction)actionButton:(id)sender;
 
 @end
