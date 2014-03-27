@@ -11,7 +11,7 @@
 @interface MapRouteViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *userStartLocationManager;
-@property (nonatomic, strong, readwrite) CLLocation *userStartLocation;
+@property (nonatomic, strong) CLLocation *userStartLocation;
 
 @property BOOL getLocation;
 
@@ -49,11 +49,14 @@
     userStartLocationManager.distanceFilter = kCLDistanceFilterNone;
     
     [userStartLocationManager startUpdatingLocation];
+
+    UITapGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    touchGesture.numberOfTapsRequired = 1;
     
     
-    UILongPressGestureRecognizer *longGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longGestureRecognizer.minimumPressDuration = 1.0;
-    [self.locationRouteMapView addGestureRecognizer:longGestureRecognizer];
+    //UILongPressGestureRecognizer *longGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    //longGestureRecognizer.minimumPressDuration = 0.1;
+    [self.locationRouteMapView addGestureRecognizer:touchGesture];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,24 +70,20 @@
 {
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
         
+        [self.locationRouteMapView removeAnnotations:self.locationRouteMapView.annotations];
+        
         CGPoint touchPoint = [gestureRecognizer locationInView:self.locationRouteMapView];
         CLLocationCoordinate2D touchMapCoordinate = [self.locationRouteMapView convertPoint:touchPoint toCoordinateFromView:self.locationRouteMapView];
         
-        MKCoordinateRegion startRegion;
-        startRegion.center = touchMapCoordinate;
-        startRegion.span.latitudeDelta = 0.2;
-        startRegion.span.longitudeDelta = 0.2;
         
         MKPointAnnotation *startAnnotation = [[MKPointAnnotation alloc] init];
         startAnnotation.coordinate = touchMapCoordinate;
-        startAnnotation.title = @"[Adresse";
-        
-        
-        [self.locationRouteMapView setRegion:startRegion animated:YES];
+        startAnnotation.title = @"[Adresse]";
         
         NSArray *annotationArray = @[startAnnotation];
-        [self.locationRouteMapView addAnnotations:annotationArray];
         
+        
+        [self.locationRouteMapView addAnnotations:annotationArray];
     }
 }
 
@@ -107,4 +106,15 @@
 
 
 
+- (IBAction)actionButton:(id)sender {
+    
+    CLGeocoder *startAdressGeocoder = [[CLGeocoder alloc] init];
+    [startAdressGeocoder geocodeAddressString:@"Am Rosengarten 7, Kassel" completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *topResult = [placemarks objectAtIndex:0];
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+        
+        
+        [self.locationRouteMapView addAnnotation:placemark];
+    }];
+}
 @end
