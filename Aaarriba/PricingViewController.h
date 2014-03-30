@@ -11,15 +11,15 @@
 @interface PricingViewController : UIViewController
 
 
-#pragma -
-#pragma Methods
+#pragma mark -
+#pragma mark Methods
 
 - (void)loadPricingData;
 - (void)createContents;
 
 
 
-#pragma Packet size
+#pragma mark Packet size
 
 - (IBAction)zehnkgButton:(id)sender;
 - (IBAction)zwanzigkgButton:(id)sender;
@@ -39,7 +39,7 @@
 
 
 
-#pragma Locate user
+#pragma mark Locate user
 
 @property (weak, nonatomic) IBOutlet UITextField *packetRouteBeginTextField;
 @property (weak, nonatomic) IBOutlet UITextField *packetRouteEndTextField;
@@ -57,6 +57,15 @@
 - (IBAction)contactsBeginButton:(id)sender;
 - (IBAction)contactsEndButton:(id)sender;
 
+
+
+
+#pragma mark Location coordinates
+
+@property (nonatomic, strong) NSString *startLocationLatitude;
+@property (nonatomic, strong) NSString *startLocationLongitude;
+@property (nonatomic, strong) NSString *endLocationLatitude;
+@property (nonatomic, strong) NSString *endLocationLongitude;
 
 
 @end

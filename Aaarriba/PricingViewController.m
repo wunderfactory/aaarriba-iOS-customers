@@ -20,7 +20,7 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude;
 
 
 
@@ -65,7 +65,7 @@
 
 
 
-#pragma Methods
+#pragma mark Methods
 
 - (void)loadPricingData
 {
@@ -122,6 +122,9 @@
     
     [locateStartButton setHidden:YES];
     [locateEndButton setHidden:YES];
+    
+    
+    packetRouteBeginTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddress"];
 }
 
 
@@ -137,6 +140,9 @@
 
 
 
+
+
+#pragma mark Packet size
 
 
 - (IBAction)zehnkgButton:(id)sender {
@@ -227,6 +233,11 @@
 
 
 
+
+
+
+
+#pragma mark Locate user
 
 
 - (IBAction)packetRouteBeginTextField:(id)sender {

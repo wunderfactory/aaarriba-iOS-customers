@@ -7,11 +7,14 @@
 //
 
 #import "MapRouteViewController.h"
+#import "PricingViewController.h"
 
 @interface MapRouteViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) CLLocationManager *userStartLocationManager;
 @property (nonatomic, strong) CLLocation *userStartLocation;
+
+@property (nonatomic, strong) NSString *addressString;
 
 @property BOOL getLocation;
 
@@ -21,7 +24,7 @@
 
 @implementation MapRouteViewController
 
-@synthesize userStartLocation, userStartLocationManager, getLocation;
+@synthesize userStartLocation, userStartLocationManager, getLocation, addressString;
 
 
 
@@ -77,16 +80,17 @@
         
         CGPoint touchPoint = [gestureRecognizer locationInView:self.locationRouteMapView];
         CLLocationCoordinate2D touchMapCoordinate = [self.locationRouteMapView convertPoint:touchPoint toCoordinateFromView:self.locationRouteMapView];
+
         
         
         MKPointAnnotation *startAnnotation = [[MKPointAnnotation alloc] init];
         startAnnotation.coordinate = touchMapCoordinate;
-        startAnnotation.title = @"[Adresse]";
+        //startAnnotation.title = @"[Adresse]";
         
         NSArray *annotationArray = @[startAnnotation];
         
         
-        [self.locationRouteMapView addAnnotations:annotationArray];
+        [self.locationRouteMapView showAnnotations:annotationArray animated:YES];
     }
 }
 
@@ -104,8 +108,19 @@
 {
     userStartLocation = [locations lastObject];
     
+    
     NSArray *locationArray = @[userStartLocation];
     [self.locationRouteMapView showAnnotations:locationArray animated:YES];
+    
+    CLGeocoder *locationGeocoder = [[CLGeocoder alloc] init];
+    [locationGeocoder reverseGeocodeLocation:userStartLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
+    }];
+    
     
     [userStartLocationManager stopUpdatingLocation];
 }
@@ -115,16 +130,26 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *addressString = self.addressSearchBar.text;
+    NSString *searchAddressString = self.addressSearchBar.text;
     
     
     CLGeocoder *startAdressGeocoder = [[CLGeocoder alloc] init];
-    [startAdressGeocoder geocodeAddressString:addressString completionHandler:^(NSArray *placemarks, NSError *error) {
+    [startAdressGeocoder geocodeAddressString:searchAddressString completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *topResult = [placemarks objectAtIndex:0];
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
         
-        [self.locationRouteMapView addAnnotation:placemark];
+        NSArray *locationArray = @[placemark];
+        
+        userStartLocation = [placemarks objectAtIndex:0];
+        
+        [searchBar resignFirstResponder];
+        [self.locationRouteMapView showAnnotations:locationArray animated:YES];
     }];
 }
+
+
+
+
+
 
 @end
