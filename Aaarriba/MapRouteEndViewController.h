@@ -13,4 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *endLocationMapView;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *addressSearchBar;
+
 @end

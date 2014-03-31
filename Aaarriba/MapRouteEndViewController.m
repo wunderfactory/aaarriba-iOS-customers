@@ -8,11 +8,12 @@
 
 #import "MapRouteEndViewController.h"
 
-@interface MapRouteEndViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface MapRouteEndViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) CLLocationManager *userEndLocationManager;
-
 @property (nonatomic, strong) CLLocation *userEndLocation;
+
+@property (nonatomic, strong) NSString *addressString;
 
 @property BOOL getLocation;
 
@@ -22,7 +23,7 @@
 
 @implementation MapRouteEndViewController
 
-@synthesize userEndLocationManager, userEndLocation, getLocation;
+@synthesize userEndLocation, userEndLocationManager, getLocation, addressString;
 
 
 
@@ -41,15 +42,26 @@
     // Do any additional setup after loading the view.
     
     
+    self.addressSearchBar.delegate = self;
     self.endLocationMapView.delegate = self;
-    //self.locationRouteMapView.showsUserLocation = YES;
+    //self.endLocationMapView.showsUserLocation = YES;
     
     userEndLocationManager = [[CLLocationManager alloc] init];
     userEndLocationManager.delegate = self;
     userEndLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
     userEndLocationManager.distanceFilter = kCLDistanceFilterNone;
     
-    [userEndLocationManager startUpdatingLocation];
+    
+    
+    UITapGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    touchGesture.numberOfTapsRequired = 1;
+    
+    
+    UIBarButtonItem *locateItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"10kg.png"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(locateUserOnMapView)];
+    self.navigationItem.rightBarButtonItems = @[locateItem];
+    
+    
+    [self.endLocationMapView addGestureRecognizer:touchGesture];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,20 +71,100 @@
 }
 
 
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        
+        [self.endLocationMapView removeAnnotations:self.endLocationMapView.annotations];
+        
+        CGPoint touchPoint = [gestureRecognizer locationInView:self.endLocationMapView];
+        CLLocationCoordinate2D touchMapCoordinate = [self.endLocationMapView convertPoint:touchPoint toCoordinateFromView:self.endLocationMapView];
+        
+        
+        
+        MKPointAnnotation *endAnnotation = [[MKPointAnnotation alloc] init];
+        endAnnotation.coordinate = touchMapCoordinate;
+        //endAnnotation.title = @"[Adresse]";
+        
+        NSArray *annotationArray = @[endAnnotation];
+        
+        
+        [self.endLocationMapView showAnnotations:annotationArray animated:YES];
+        
+        
+        
+        userEndLocation = [[CLLocation alloc] initWithCoordinate:touchMapCoordinate altitude:-1 horizontalAccuracy:-1 verticalAccuracy:CLLocationDistanceMax timestamp:nil];
+        
+        CLGeocoder *locationGeocoder = [[CLGeocoder alloc] init];
+        [locationGeocoder reverseGeocodeLocation:userEndLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
+            
+            NSLog(@"%@", address);
+        }];
+    }
+}
+
+
+
+
+
+- (void)locateUserOnMapView
+{
+    [userEndLocationManager startUpdatingLocation];
+}
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     userEndLocation = [locations lastObject];
     
+    
     NSArray *locationArray = @[userEndLocation];
     [self.endLocationMapView showAnnotations:locationArray animated:YES];
     
-    float userStartCoordinateLatitude = userEndLocation.coordinate.latitude;
-    float userStartCoordinateLongitude = userEndLocation.coordinate.longitude;
+    CLGeocoder *locationGeocoder = [[CLGeocoder alloc] init];
+    [locationGeocoder reverseGeocodeLocation:userEndLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
+    }];
     
-    [[NSUserDefaults standardUserDefaults] setInteger:userStartCoordinateLatitude forKey:@"userStartLocationLatitude"];
-    [[NSUserDefaults standardUserDefaults] setInteger:userStartCoordinateLongitude forKey:@"userStartLocationLongitude"];
+    
+    [userEndLocationManager stopUpdatingLocation];
+}
+
+
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *searchAddressString = self.addressSearchBar.text;
+    
+    
+    CLGeocoder *endAdressGeocoder = [[CLGeocoder alloc] init];
+    [endAdressGeocoder geocodeAddressString:searchAddressString completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *topResult = [placemarks objectAtIndex:0];
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+        
+        NSArray *locationArray = @[placemark];
+        
+        userEndLocation = [placemarks objectAtIndex:0];
+        
+        [searchBar resignFirstResponder];
+        [self.endLocationMapView showAnnotations:locationArray animated:YES];
+        
+        
+        
+        NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
+    }];
 }
 
 

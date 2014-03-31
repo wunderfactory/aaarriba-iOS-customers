@@ -91,6 +91,21 @@
         
         
         [self.locationRouteMapView showAnnotations:annotationArray animated:YES];
+        
+        
+        
+        userStartLocation = [[CLLocation alloc] initWithCoordinate:touchMapCoordinate altitude:-1 horizontalAccuracy:-1 verticalAccuracy:CLLocationDistanceMax timestamp:nil];
+        
+        CLGeocoder *locationGeocoder = [[CLGeocoder alloc] init];
+        [locationGeocoder reverseGeocodeLocation:userStartLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
+            
+            NSLog(@"%@", address);
+        }];
     }
 }
 
@@ -144,6 +159,12 @@
         
         [searchBar resignFirstResponder];
         [self.locationRouteMapView showAnnotations:locationArray animated:YES];
+        
+        
+        
+        NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
     }];
 }
 

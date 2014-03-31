@@ -125,6 +125,7 @@
     
     
     packetRouteBeginTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddress"];
+    packetRouteEndTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndAddress"];
 }
 
 
@@ -258,13 +259,11 @@
 - (IBAction)locateStartButton:(id)sender {
     
     [self performSegueWithIdentifier:@"pricingToMapView" sender:self];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"startButtonTappedToMapView"];
 }
 
 - (IBAction)locateEndButton:(id)sender {
     
-    [self performSegueWithIdentifier:@"pricingToMapView" sender:self];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"startButtonTappedToMapView"];
+    [self performSegueWithIdentifier:@"pricingToEndMapView" sender:self];
 }
 
 

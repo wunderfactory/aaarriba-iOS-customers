@@ -44,6 +44,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userStartAddress"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userEndAddress"];
 }
 
 @end

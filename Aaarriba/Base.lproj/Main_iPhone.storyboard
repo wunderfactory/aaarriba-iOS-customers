@@ -186,7 +186,6 @@
                                 </state>
                                 <connections>
                                     <action selector="locateEndButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="Kcx-zJ-HjW"/>
-                                    <segue destination="Pen-Jb-usP" kind="push" id="L99-zu-Cmb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -208,6 +207,7 @@
                         <outlet property="zwanzigkgButton" destination="mam-Qh-iOK" id="5Ym-fD-fpp"/>
                         <segue destination="Jgc-B9-PMd" kind="push" identifier="pricingToMapView" id="kKy-2B-e4i"/>
                         <segue destination="wKK-jr-SEh" kind="push" identifier="pricingToAdressbook" id="0Ca-2Y-ioj"/>
+                        <segue destination="Pen-Jb-usP" kind="push" identifier="pricingToEndMapView" id="TI4-cT-V9t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj9-9M-Ws2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,12 +302,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="jMo-cK-xzi"/>
                     <connections>
+                        <outlet property="addressSearchBar" destination="Mua-k1-1hF" id="Sq3-jW-Cg2"/>
                         <outlet property="endLocationMapView" destination="yCY-1a-437" id="jIn-ry-q3L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsF-Tw-Jb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2063" y="-890"/>
+            <point key="canvasLocation" x="2035" y="-890"/>
         </scene>
         <!--View Controller - Konto-->
         <scene sceneID="7ae-uV-VeY">
