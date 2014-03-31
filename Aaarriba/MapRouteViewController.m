@@ -100,11 +100,10 @@
         [locationGeocoder reverseGeocodeLocation:userStartLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             
             CLPlacemark *placemark = [placemarks objectAtIndex:0];
-            NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+            NSString *address = [[NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(null), "]];
+            
             
             [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
-            
-            NSLog(@"%@", address);
         }];
     }
 }
@@ -131,7 +130,7 @@
     [locationGeocoder reverseGeocodeLocation:userStartLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];        
+        NSString *address = [[NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(null), "]];
         
         [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
     }];
@@ -162,7 +161,7 @@
         
         
         
-        NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+        NSString *address = [[NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(null), "]];
         
         [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
     }];
