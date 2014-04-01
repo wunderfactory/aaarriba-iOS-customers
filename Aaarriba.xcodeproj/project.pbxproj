@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808CC1418E179B500973BED /* CoreLocation.framework */; };
 		1814062918E064F0002AA71F /* DPWebConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1814062818E064F0002AA71F /* DPWebConnector.m */; };
+		182DEA7618E9C37200EAE81E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DEA7518E9C37200EAE81E /* SVProgressHUD.m */; };
 		184388B118DDA6C300C092D6 /* 10kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AD18DDA6C300C092D6 /* 10kg.png */; };
 		184388B218DDA6C300C092D6 /* 20kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AE18DDA6C300C092D6 /* 20kg.png */; };
 		184388B318DDA6C300C092D6 /* 30kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AF18DDA6C300C092D6 /* 30kg.png */; };
@@ -51,6 +52,8 @@
 		1808CC1418E179B500973BED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1814062718E064F0002AA71F /* DPWebConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPWebConnector.h; sourceTree = "<group>"; };
 		1814062818E064F0002AA71F /* DPWebConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPWebConnector.m; sourceTree = "<group>"; };
+		182DEA7418E9C37200EAE81E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		182DEA7518E9C37200EAE81E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		184388AD18DDA6C300C092D6 /* 10kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10kg.png; sourceTree = "<group>"; };
 		184388AE18DDA6C300C092D6 /* 20kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20kg.png; sourceTree = "<group>"; };
 		184388AF18DDA6C300C092D6 /* 30kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30kg.png; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 		1814062618E063F4002AA71F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				182DEA7418E9C37200EAE81E /* SVProgressHUD.h */,
+				182DEA7518E9C37200EAE81E /* SVProgressHUD.m */,
 				1814062718E064F0002AA71F /* DPWebConnector.h */,
 				1814062818E064F0002AA71F /* DPWebConnector.m */,
 			);
@@ -339,6 +344,7 @@
 				1814062918E064F0002AA71F /* DPWebConnector.m in Sources */,
 				18FAB91618DF436100D6125E /* ContactsViewController.m in Sources */,
 				1874B8C918D8AA8D00021B48 /* AppDelegate.m in Sources */,
+				182DEA7618E9C37200EAE81E /* SVProgressHUD.m in Sources */,
 				1874B8F218D8AB7200021B48 /* PricingViewController.m in Sources */,
 				1874B8C518D8AA8D00021B48 /* main.m in Sources */,
 				1874B8EF18D8AAAE00021B48 /* LoginViewController.m in Sources */,

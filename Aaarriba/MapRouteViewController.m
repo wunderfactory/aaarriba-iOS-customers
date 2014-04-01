@@ -103,6 +103,16 @@
             NSString *address = [[NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(null), "]];
             
             
+            
+            
+            NSNumber *longitude = [NSNumber numberWithDouble:userStartLocation.coordinate.longitude];
+            NSNumber *latitude = [NSNumber numberWithDouble:userStartLocation.coordinate.latitude];
+            
+            NSDictionary *startDictionary = @{@"longitude": longitude, @"latitude": latitude};
+            
+            
+            [[NSUserDefaults standardUserDefaults] setObject:startDictionary forKey:@"userStartLocationDict"];
+            
             [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
         }];
     }
@@ -131,6 +141,16 @@
         
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         NSString *address = [[NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(null), "]];
+        
+        
+        
+        NSNumber *longitude = [NSNumber numberWithDouble:userStartLocation.coordinate.longitude];
+        NSNumber *latitude = [NSNumber numberWithDouble:userStartLocation.coordinate.latitude];
+        
+        NSDictionary *startDictionary = @{@"longitude": longitude, @"latitude": latitude};
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:startDictionary forKey:@"userStartLocationDict"];
         
         [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
     }];
@@ -162,6 +182,15 @@
         
         
         NSString *address = [[NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(null), "]];
+        
+        
+        NSNumber *longitude = [NSNumber numberWithDouble:userStartLocation.coordinate.longitude];
+        NSNumber *latitude = [NSNumber numberWithDouble:userStartLocation.coordinate.latitude];
+        
+        NSDictionary *startDictionary = @{@"longitude": longitude, @"latitude": latitude};
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:startDictionary forKey:@"userStartLocationDict"];
         
         [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userStartAddress"];
     }];

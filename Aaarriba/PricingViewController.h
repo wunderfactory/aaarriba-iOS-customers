@@ -68,4 +68,9 @@
 @property (nonatomic, strong) NSString *endLocationLongitude;
 
 
+#pragma mark Calculate price
+
+@property (weak, nonatomic) IBOutlet UIButton *calculatePriceButton;
+- (IBAction)calculatePriceButton:(id)sender;
+
 @end

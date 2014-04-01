@@ -188,6 +188,16 @@
                                     <action selector="locateEndButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="Kcx-zJ-HjW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2W-Ko-yUg">
+                                <rect key="frame" x="123" y="329" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Berechnen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="calculatePriceButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="bYS-oD-VjJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -195,6 +205,7 @@
                     <navigationItem key="navigationItem" title="Preisliste" id="KD2-yc-5w2"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="calculatePriceButton" destination="k2W-Ko-yUg" id="O9n-Hb-qq3"/>
                         <outlet property="contactsBeginButton" destination="Ltt-cA-eKd" id="WVu-BL-6jf"/>
                         <outlet property="contactsEndButton" destination="YI1-s3-hnI" id="oPO-nx-aWi"/>
                         <outlet property="dreissigkgButton" destination="RVE-NP-bss" id="ybf-BA-QDE"/>

@@ -7,6 +7,7 @@
 //
 
 #import "PricingViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface PricingViewController () <UITextViewDelegate>
 
@@ -20,7 +21,7 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton;
 
 
 
@@ -122,6 +123,16 @@
     
     [locateStartButton setHidden:YES];
     [locateEndButton setHidden:YES];
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddressCoorddinates"] == nil ||  [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndAddressCoorddinates"] == nil) {
+        [calculatePriceButton setHidden:YES];
+    }
+    else {
+        [calculatePriceButton setHidden:NO];
+    }
+    
+    [calculatePriceButton setHidden:NO];
     
     
     packetRouteBeginTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddress"];
@@ -280,17 +291,21 @@
 
 
 
+#pragma mark Calculate Price
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)calculatePriceButton:(id)sender {
+    
+    NSDictionary *startDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartLocationDict"];
+    NSDictionary *endDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndLocationDict"];
+    
+    
+    CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:[[startDictionary objectForKey:@"latitude"] doubleValue] longitude:[[startDictionary objectForKey:@"longitude"] doubleValue]];
+    CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[[endDictionary objectForKey:@"latitude"] doubleValue] longitude:[[endDictionary objectForKey:@"longitude"] doubleValue]];
+    
+    
+    
+    CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
 }
-*/
 
 
 @end

@@ -101,9 +101,16 @@
             CLPlacemark *placemark = [placemarks objectAtIndex:0];
             NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
             
-            [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
             
-            NSLog(@"%@", address);
+            
+            
+            NSNumber *longitude = [NSNumber numberWithDouble:userEndLocation.coordinate.longitude];
+            NSNumber *latitude = [NSNumber numberWithDouble:userEndLocation.coordinate.latitude];
+            
+            NSDictionary *startDictionary = @{@"longitude": longitude, @"latitude": latitude};
+            
+            [[NSUserDefaults standardUserDefaults] setObject:startDictionary forKey:@"userEndLocationDict"];
+            [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
         }];
     }
 }
@@ -132,6 +139,14 @@
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
         
+        
+        
+        NSNumber *longitude = [NSNumber numberWithDouble:userEndLocation.coordinate.longitude];
+        NSNumber *latitude = [NSNumber numberWithDouble:userEndLocation.coordinate.latitude];
+        
+        NSDictionary *startDictionary = @{@"longitude": longitude, @"latitude": latitude};
+        
+        [[NSUserDefaults standardUserDefaults] setObject:startDictionary forKey:@"userEndLocationDict"];
         [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
     }];
     
@@ -162,7 +177,15 @@
         
         
         NSString *address = [NSString stringWithFormat:@"%@, %@, %@", [placemark thoroughfare],[placemark subThoroughfare], [placemark locality]];
+
         
+        
+        NSNumber *longitude = [NSNumber numberWithDouble:userEndLocation.coordinate.longitude];
+        NSNumber *latitude = [NSNumber numberWithDouble:userEndLocation.coordinate.latitude];
+        
+        NSDictionary *startDictionary = @{@"longitude": longitude, @"latitude": latitude};
+        
+        [[NSUserDefaults standardUserDefaults] setObject:startDictionary forKey:@"userEndLocationDict"];
         [[NSUserDefaults standardUserDefaults] setObject:address forKey:@"userEndAddress"];
     }];
 }

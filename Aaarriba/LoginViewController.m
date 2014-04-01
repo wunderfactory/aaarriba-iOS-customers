@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "PricingViewController.h"
+#import "SVProgressHUD.h"
 
 @interface LoginViewController ()
 
@@ -64,11 +65,14 @@
 
 - (IBAction)loginButtonAction:(id)sender {
     
+    [SVProgressHUD show];
     
     // if login response is YES
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"userIsLoggedIn"];
     
     [self performSegueWithIdentifier:@"loginToPricingViewController" sender:self];
+    
+    [SVProgressHUD dismiss];
 }
 
 
