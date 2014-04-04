@@ -9,19 +9,21 @@
 #import "PricingViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface PricingViewController () <UITextViewDelegate>
+@interface PricingViewController () <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) NSMutableDictionary *zehnKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *zwanzigKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *dreissigKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *vierzigKGDictionary;
 
+@property NSInteger kgInteger;
+
 @end
 
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, zehnkgButton, zwanzigkgButton, dreissigkgButton, vierzigkgButton, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, packetSizePickerView;
 
 
 
@@ -70,7 +72,7 @@
 
 - (void)loadPricingData
 {
-    zehnKGDictionary = [zehnKGDictionary initWithObjectsAndKeys:
+    zehnKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                         @"14,78", @"5km",
                         @"21,42", @"10km",
                         @"28,56", @"15km",
@@ -81,7 +83,8 @@
                         @"7,50", @"grundpreis",
                         nil];
     
-    zwanzigKGDictionary = [zwanzigKGDictionary initWithObjectsAndKeys:
+    
+    zwanzigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                            @"16,06", @"5km",
                            @"22,61", @"10km",
                            @"29,75", @"15km",
@@ -92,7 +95,7 @@
                            @"8,50", @"grundpreis",
                            nil];
     
-    dreissigKGDictionary = [dreissigKGDictionary initWithObjectsAndKeys:
+    dreissigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             @"23,80", @"5km",
                             @"32,13", @"10km",
                             @"41,05", @"15km",
@@ -103,7 +106,7 @@
                             @"15,00", @"grundpreis",
                             nil];
     
-    vierzigKGDictionary = [vierzigKGDictionary initWithObjectsAndKeys:
+    vierzigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                            @"35,70", @"5km",
                            @"44,03", @"10km",
                            @"52,95", @"15km",
@@ -116,8 +119,16 @@
 }
 
 
+
+
 - (void)createContents
 {
+    kgInteger = 0;
+    
+    [packetSizePickerView setHidden:YES];
+    
+    
+    
     [packetRouteBeginTextField setHidden:YES];
     [packetRouteEndTextField setHidden:YES];
     
@@ -154,93 +165,58 @@
 
 
 
+
 #pragma mark Packet size
 
 
-- (IBAction)zehnkgButton:(id)sender {
-    
-    zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-    dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-    vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        zehnkgButton.frame = CGRectMake(95, 50, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-        zwanzigkgButton.frame = CGRectMake(325, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-        dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-        vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    }];
-    
-    [packetRouteBeginTextField setHidden:NO];
-    [packetRouteEndTextField setHidden:NO];
-}
-
-- (IBAction)zwanzigkgButton:(id)sender {
-    
-    zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-    dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-    vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        zehnkgButton.frame = CGRectMake(-135, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-        zwanzigkgButton.frame = CGRectMake(95, 50, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-        dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-        vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    }];
-    
-    [packetRouteBeginTextField setHidden:NO];
-    [packetRouteEndTextField setHidden:NO];
-}
-
-- (IBAction)dreissigkgButton:(id)sender {
-    
-    zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-    zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-    vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        zehnkgButton.frame = CGRectMake(-135, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-        zwanzigkgButton.frame = CGRectMake(325, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-        dreissigkgButton.frame = CGRectMake(95, 50, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-        vierzigkgButton.frame = CGRectMake(325, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    }];
-    
-    [packetRouteBeginTextField setHidden:NO];
-    [packetRouteEndTextField setHidden:NO];
-}
-
-- (IBAction)vierzigkgButton:(id)sender {
-    
-    zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-    zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-    dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        zehnkgButton.frame = CGRectMake(-135, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-        zwanzigkgButton.frame = CGRectMake(325, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-        dreissigkgButton.frame = CGRectMake(-135, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-        vierzigkgButton.frame = CGRectMake(95, 50, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    }];
-    
-    [packetRouteBeginTextField setHidden:NO];
-    [packetRouteEndTextField setHidden:NO];
+- (IBAction)packetSizeButton:(id)sender
+{
+    [packetSizePickerView setHidden:NO];
 }
 
 
 
-- (IBAction)resetAnimationButton:(id)sender {
+#pragma mark Picker View Data Source
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    NSMutableArray *zahlenArray = [NSMutableArray array];
     
-    [UIView animateWithDuration:1.0 animations:^{
-        zehnkgButton.frame = CGRectMake(24, 164, zehnkgButton.bounds.size.width, zehnkgButton.bounds.size.height);
-        zwanzigkgButton.frame = CGRectMake(175, 164, zwanzigkgButton.bounds.size.width, zwanzigkgButton.bounds.size.height);
-        dreissigkgButton.frame = CGRectMake(24, 279, dreissigkgButton.bounds.size.width, dreissigkgButton.bounds.size.height);
-        vierzigkgButton.frame = CGRectMake(175, 279, vierzigkgButton.bounds.size.width, vierzigkgButton.bounds.size.height);
-    }];
+    for (int i = 1; i < 41; i++) {
+        [zahlenArray addObject:[NSNumber numberWithInt:i]];
+    }
     
-    [packetRouteBeginTextField setHidden:YES];
-    [packetRouteEndTextField setHidden:YES];
+    return [zahlenArray count];
+}
+
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSMutableArray *zahlenArray = [NSMutableArray array];
     
-    [locateStartButton setHidden:YES];
-    [locateEndButton setHidden:YES];
+    for (int i = 1; i < 41; i++) {
+        [zahlenArray addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+    
+    return [zahlenArray objectAtIndex:row];
+}
+
+
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSMutableArray *zahlenArray = [NSMutableArray array];
+    
+    for (int i = 1; i < 41; i++) {
+        [zahlenArray addObject:[NSNumber numberWithInt:i]];
+    }
+    
+    kgInteger = [
 }
 
 
@@ -291,7 +267,11 @@
 
 
 
+
+
+
 #pragma mark Calculate Price
+
 
 - (IBAction)calculatePriceButton:(id)sender {
     
@@ -304,7 +284,128 @@
     
     
     
+    
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
+    
+    
+    
+    switch (kgInteger) {
+        case 10:
+            if (distance < 5000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"5km"];
+            }
+            else if (distance < 10000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"10km"];
+            }
+            else if (distance < 15000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"15km"];
+            }
+            else if (distance < 20000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"20km"];
+            }
+            else if (distance < 25000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"25km"];
+            }
+            else if (distance < 30000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"30km"];
+            }
+            else if (distance < 35000) {
+                priceLabel.text = [zehnKGDictionary valueForKey:@"35km"];
+            }
+            
+            break;
+            
+            
+            
+            
+            
+        case 20:
+            if (distance < 5000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"5km"];
+            }
+            else if (distance < 10000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"10km"];
+            }
+            else if (distance < 15000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"15km"];
+            }
+            else if (distance < 20000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"20km"];
+            }
+            else if (distance < 25000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"25km"];
+            }
+            else if (distance < 30000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"30km"];
+            }
+            else if (distance < 35000) {
+                priceLabel.text = [zwanzigKGDictionary valueForKey:@"35km"];
+            }
+            
+            break;
+            
+            
+            
+            
+        case 30:
+            if (distance < 5000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"5km"];
+            }
+            else if (distance < 10000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"10km"];
+            }
+            else if (distance < 15000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"15km"];
+            }
+            else if (distance < 20000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"20km"];
+            }
+            else if (distance < 25000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"25km"];
+            }
+            else if (distance < 30000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"30km"];
+            }
+            else if (distance < 35000) {
+                priceLabel.text = [dreissigKGDictionary valueForKey:@"35km"];
+            }
+            
+            break;
+            
+            
+            
+            
+        case 40:
+            if (distance < 5000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"5km"];
+            }
+            else if (distance < 10000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"10km"];
+            }
+            else if (distance < 15000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"15km"];
+            }
+            else if (distance < 20000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"20km"];
+            }
+            else if (distance < 25000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"25km"];
+            }
+            else if (distance < 30000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"30km"];
+            }
+            else if (distance < 35000) {
+                priceLabel.text = [vierzigKGDictionary valueForKey:@"35km"];
+            }
+            
+            break;
+            
+            
+            
+            
+        default:
+            break;
+    }
 }
 
 

@@ -10,6 +10,10 @@
 		1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808CC1418E179B500973BED /* CoreLocation.framework */; };
 		1814062918E064F0002AA71F /* DPWebConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1814062818E064F0002AA71F /* DPWebConnector.m */; };
 		182DEA7618E9C37200EAE81E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DEA7518E9C37200EAE81E /* SVProgressHUD.m */; };
+		1840387018EDBCCF006659CA /* PacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840386F18EDBCCF006659CA /* PacketViewController.m */; };
+		1840387218EDBD3B006659CA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1840387118EDBD3B006659CA /* AVFoundation.framework */; };
+		1840387418EDC835006659CA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1840387318EDC835006659CA /* AudioToolbox.framework */; };
+		1840387718EEBE38006659CA /* TrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840387618EEBE38006659CA /* TrackingViewController.m */; };
 		184388B118DDA6C300C092D6 /* 10kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AD18DDA6C300C092D6 /* 10kg.png */; };
 		184388B218DDA6C300C092D6 /* 20kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AE18DDA6C300C092D6 /* 20kg.png */; };
 		184388B318DDA6C300C092D6 /* 30kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AF18DDA6C300C092D6 /* 30kg.png */; };
@@ -54,6 +58,12 @@
 		1814062818E064F0002AA71F /* DPWebConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPWebConnector.m; sourceTree = "<group>"; };
 		182DEA7418E9C37200EAE81E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		182DEA7518E9C37200EAE81E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		1840386E18EDBCCF006659CA /* PacketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketViewController.h; sourceTree = "<group>"; };
+		1840386F18EDBCCF006659CA /* PacketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketViewController.m; sourceTree = "<group>"; };
+		1840387118EDBD3B006659CA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1840387318EDC835006659CA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1840387518EEBE38006659CA /* TrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingViewController.h; sourceTree = "<group>"; };
+		1840387618EEBE38006659CA /* TrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingViewController.m; sourceTree = "<group>"; };
 		184388AD18DDA6C300C092D6 /* 10kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10kg.png; sourceTree = "<group>"; };
 		184388AE18DDA6C300C092D6 /* 20kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20kg.png; sourceTree = "<group>"; };
 		184388AF18DDA6C300C092D6 /* 30kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30kg.png; sourceTree = "<group>"; };
@@ -96,6 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1840387418EDC835006659CA /* AudioToolbox.framework in Frameworks */,
+				1840387218EDBD3B006659CA /* AVFoundation.framework in Frameworks */,
 				1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */,
 				18FAB91818DF4A1900D6125E /* MapKit.framework in Frameworks */,
 				1874B8BB18D8AA8D00021B48 /* CoreGraphics.framework in Frameworks */,
@@ -126,6 +138,21 @@
 				1814062818E064F0002AA71F /* DPWebConnector.m */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1840386D18EDBCAE006659CA /* Pricing */ = {
+			isa = PBXGroup;
+			children = (
+				1874B8F018D8AB7200021B48 /* PricingViewController.h */,
+				1874B8F118D8AB7200021B48 /* PricingViewController.m */,
+				18FAB91118DF435500D6125E /* MapRouteViewController.h */,
+				18FAB91218DF435500D6125E /* MapRouteViewController.m */,
+				18883D2618E30DDB00459AFF /* MapRouteEndViewController.h */,
+				18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */,
+				18FAB91418DF436100D6125E /* ContactsViewController.h */,
+				18FAB91518DF436100D6125E /* ContactsViewController.m */,
+			);
+			name = Pricing;
 			sourceTree = "<group>";
 		};
 		184388B518DDA6C600C092D6 /* Images */ = {
@@ -171,6 +198,8 @@
 		1874B8B718D8AA8D00021B48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1840387318EDC835006659CA /* AudioToolbox.framework */,
+				1840387118EDBD3B006659CA /* AVFoundation.framework */,
 				1808CC1418E179B500973BED /* CoreLocation.framework */,
 				18FAB91718DF4A1900D6125E /* MapKit.framework */,
 				1874B8B818D8AA8D00021B48 /* Foundation.framework */,
@@ -191,14 +220,11 @@
 				18FAB90B18DF329F00D6125E /* Main_iPad.storyboard */,
 				1874B8ED18D8AAAE00021B48 /* LoginViewController.h */,
 				1874B8EE18D8AAAE00021B48 /* LoginViewController.m */,
-				1874B8F018D8AB7200021B48 /* PricingViewController.h */,
-				1874B8F118D8AB7200021B48 /* PricingViewController.m */,
-				18FAB91118DF435500D6125E /* MapRouteViewController.h */,
-				18FAB91218DF435500D6125E /* MapRouteViewController.m */,
-				18883D2618E30DDB00459AFF /* MapRouteEndViewController.h */,
-				18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */,
-				18FAB91418DF436100D6125E /* ContactsViewController.h */,
-				18FAB91518DF436100D6125E /* ContactsViewController.m */,
+				1840386D18EDBCAE006659CA /* Pricing */,
+				1840386E18EDBCCF006659CA /* PacketViewController.h */,
+				1840386F18EDBCCF006659CA /* PacketViewController.m */,
+				1840387518EEBE38006659CA /* TrackingViewController.h */,
+				1840387618EEBE38006659CA /* TrackingViewController.m */,
 				184388B518DDA6C600C092D6 /* Images */,
 				1874B8D018D8AA8D00021B48 /* Images.xcassets */,
 				1874B8BF18D8AA8D00021B48 /* Supporting Files */,
@@ -344,9 +370,11 @@
 				1814062918E064F0002AA71F /* DPWebConnector.m in Sources */,
 				18FAB91618DF436100D6125E /* ContactsViewController.m in Sources */,
 				1874B8C918D8AA8D00021B48 /* AppDelegate.m in Sources */,
+				1840387718EEBE38006659CA /* TrackingViewController.m in Sources */,
 				182DEA7618E9C37200EAE81E /* SVProgressHUD.m in Sources */,
 				1874B8F218D8AB7200021B48 /* PricingViewController.m in Sources */,
 				1874B8C518D8AA8D00021B48 /* main.m in Sources */,
+				1840387018EDBCCF006659CA /* PacketViewController.m in Sources */,
 				1874B8EF18D8AAAE00021B48 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

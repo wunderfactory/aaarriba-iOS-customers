@@ -19,20 +19,18 @@
 
 
 
+
 #pragma mark Packet size
 
-- (IBAction)zehnkgButton:(id)sender;
-- (IBAction)zwanzigkgButton:(id)sender;
-- (IBAction)dreissigkgButton:(id)sender;
-- (IBAction)vierzigkgButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *packetSizeButton;
+- (IBAction)packetSizeButton:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIButton *zehnkgButton;
-@property (weak, nonatomic) IBOutlet UIButton *zwanzigkgButton;
-@property (weak, nonatomic) IBOutlet UIButton *dreissigkgButton;
-@property (weak, nonatomic) IBOutlet UIButton *vierzigkgButton;
+@property (weak, nonatomic) IBOutlet UIPickerView *packetSizePickerView;
 
 
-- (IBAction)resetAnimationButton:(id)sender;
+
+
+#pragma mark Picker View Data Source
 
 
 
@@ -72,5 +70,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *calculatePriceButton;
 - (IBAction)calculatePriceButton:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 
 @end
