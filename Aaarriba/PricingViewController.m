@@ -216,7 +216,8 @@
         [zahlenArray addObject:[NSNumber numberWithInt:i]];
     }
     
-    kgInteger = [
+    id kgInt = [zahlenArray objectAtIndex:row];
+    kgInteger = [kgInt integerValue];
 }
 
 
@@ -288,123 +289,111 @@
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     
     
+            
+    if (kgInteger < 11) {
+        
+        if (distance < 5000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"5km"];
+        }
+        else if (distance < 10000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"10km"];
+        }
+        else if (distance < 15000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"15km"];
+        }
+        else if (distance < 20000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"20km"];
+        }
+        else if (distance < 25000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"25km"];
+        }
+        else if (distance < 30000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"30km"];
+        }
+        else if (distance < 35000) {
+            priceLabel.text = [zehnKGDictionary valueForKey:@"35km"];
+        }
+    }
+            
+            
+            
+    else if (kgInteger < 21) {
+        
+        if (distance < 5000) {
+            priceLabel.text = [zwanzigKGDictionary valueForKey:@"5km"];
+        }
+        else if (distance < 10000) {
+        priceLabel.text = [zwanzigKGDictionary valueForKey:@"10km"];
+            }
+        else if (distance < 15000) {
+            priceLabel.text = [zwanzigKGDictionary valueForKey:@"15km"];
+        }
+        else if (distance < 20000) {
+            priceLabel.text = [zwanzigKGDictionary valueForKey:@"20km"];
+        }
+        else if (distance < 25000) {
+            priceLabel.text = [zwanzigKGDictionary valueForKey:@"25km"];
+        }
+        else if (distance < 30000) {
+            priceLabel.text = [zwanzigKGDictionary valueForKey:@"30km"];
+        }
+        else if (distance < 35000) {
+            priceLabel.text = [zwanzigKGDictionary valueForKey:@"35km"];
+        }
+    }
+        
+        
     
-    switch (kgInteger) {
-        case 10:
-            if (distance < 5000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"5km"];
-            }
-            else if (distance < 10000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"10km"];
-            }
-            else if (distance < 15000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"15km"];
-            }
-            else if (distance < 20000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"20km"];
-            }
-            else if (distance < 25000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"25km"];
-            }
-            else if (distance < 30000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"30km"];
-            }
-            else if (distance < 35000) {
-                priceLabel.text = [zehnKGDictionary valueForKey:@"35km"];
-            }
-            
-            break;
-            
-            
-            
-            
-            
-        case 20:
-            if (distance < 5000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"5km"];
-            }
-            else if (distance < 10000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"10km"];
-            }
-            else if (distance < 15000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"15km"];
-            }
-            else if (distance < 20000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"20km"];
-            }
-            else if (distance < 25000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"25km"];
-            }
-            else if (distance < 30000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"30km"];
-            }
-            else if (distance < 35000) {
-                priceLabel.text = [zwanzigKGDictionary valueForKey:@"35km"];
-            }
-            
-            break;
-            
-            
-            
-            
-        case 30:
-            if (distance < 5000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"5km"];
-            }
-            else if (distance < 10000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"10km"];
-            }
-            else if (distance < 15000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"15km"];
-            }
-            else if (distance < 20000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"20km"];
-            }
-            else if (distance < 25000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"25km"];
-            }
-            else if (distance < 30000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"30km"];
-            }
-            else if (distance < 35000) {
-                priceLabel.text = [dreissigKGDictionary valueForKey:@"35km"];
-            }
-            
-            break;
-            
-            
-            
-            
-        case 40:
-            if (distance < 5000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"5km"];
-            }
-            else if (distance < 10000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"10km"];
-            }
-            else if (distance < 15000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"15km"];
-            }
-            else if (distance < 20000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"20km"];
-            }
-            else if (distance < 25000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"25km"];
-            }
-            else if (distance < 30000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"30km"];
-            }
-            else if (distance < 35000) {
-                priceLabel.text = [vierzigKGDictionary valueForKey:@"35km"];
-            }
-            
-            break;
-            
-            
-            
-            
-        default:
-            break;
+    else if (kgInteger < 31) {
+        
+        if (distance < 5000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"5km"];
+        }
+        else if (distance < 10000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"10km"];
+        }
+        else if (distance < 15000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"15km"];
+        }
+        else if (distance < 20000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"20km"];
+        }
+        else if (distance < 25000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"25km"];
+        }
+        else if (distance < 30000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"30km"];
+        }
+        else if (distance < 35000) {
+            priceLabel.text = [dreissigKGDictionary valueForKey:@"35km"];
+        }
+    }
+    
+    
+    
+    else if (kgInteger < 41) {
+        
+        if (distance < 5000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"5km"];
+        }
+        else if (distance < 10000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"10km"];
+        }
+        else if (distance < 15000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"15km"];
+        }
+        else if (distance < 20000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"20km"];
+        }
+        else if (distance < 25000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"25km"];
+        }
+        else if (distance < 30000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"30km"];
+        }
+        else if (distance < 35000) {
+            priceLabel.text = [vierzigKGDictionary valueForKey:@"35km"];
+        }
     }
 }
 
