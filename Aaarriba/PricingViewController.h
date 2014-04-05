@@ -22,7 +22,7 @@
 
 #pragma mark Packet size
 
-@property (strong, nonatomic) IBOutlet UIView *packetSizeButton;
+@property (weak, nonatomic) IBOutlet UIButton *packetSizeButton;
 - (IBAction)packetSizeButton:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *packetSizePickerView;

@@ -206,6 +206,14 @@
 {
     [packetRouteBeginTextField resignFirstResponder];
     [packetRouteEndTextField resignFirstResponder];
+    [packetSizePickerView setHidden:YES];
+    
+    if (![packetSizeButton.titleLabel.text isEqualToString:@"Gewicht"]) {
+        [packetRouteBeginTextField setHidden:NO];
+    }
+    if (![packetRouteBeginTextField.text isEqualToString:@""]) {
+        [packetRouteEndTextField setHidden:NO];
+    }
 }
 
 
@@ -266,6 +274,8 @@
     
     id kgInt = [zahlenArray objectAtIndex:row];
     kgInteger = [kgInt integerValue];
+    
+    packetSizeButton.titleLabel.text = [NSString stringWithFormat:@"%@kg", [zahlenArray objectAtIndex:row]];
 }
 
 
@@ -306,12 +316,12 @@
 
 - (IBAction)contactsBeginButton:(id)sender {
     
-    [self performSegueWithIdentifier:@"pricingToAdressbook" sender:self];
+    [self performSegueWithIdentifier:@"pricingToStartAddress" sender:self];
 }
 
 - (IBAction)contactsEndButton:(id)sender {
 
-    [self performSegueWithIdentifier:@"pricingToAdressbook" sender:self];
+    [self performSegueWithIdentifier:@"pricingToEndAddress" sender:self];
 }
 
 
@@ -336,8 +346,32 @@
     
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     
-    distance = 4000;
-    kgInteger = 5;
+    
+    /*
+    float startLatitude = [[startDictionary objectForKey:@"latitude"] floatValue];
+    float startLongitude = [[startDictionary objectForKey:@"longitude"] floatValue];
+    
+    float endLatitude = [[endDictionary objectForKey:@"latitude"] floatValue];
+    float endLongitude = [[endDictionary objectForKey:@"longitude"] floatValue];
+    
+    
+    
+    NSURL *googleDirectionsAPIURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/distancematrix/output?origins=%f,%f&destinations=%f,%f", startLatitude, startLongitude, endLatitude, endLongitude]];
+    NSMutableURLRequest *googleDirectionsRequest = [NSMutableURLRequest requestWithURL:googleDirectionsAPIURL];
+    [googleDirectionsRequest setHTTPMethod:@"GET"];
+    [googleDirectionsRequest setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLResponse *googleResponse;
+    NSData *googleData = [NSURLConnection sendSynchronousRequest:googleDirectionsRequest returningResponse:&googleResponse error:nil];
+    
+    id jsonData = [NSJSONSerialization JSONObjectWithData:googleData options:0 error:nil];
+    NSMutableDictionary *responseDict;
+    responseDict = jsonData;
+    
+    NSLog(@"%@", googleDirectionsAPIURL);
+    NSLog(@"%@", responseDict);
+    */
+    
     
     if (distance < 5000) {
         
@@ -345,11 +379,9 @@
             
             float price = [self calculatePriceWithWeight:kgInteger basePriceDictionary:zehnKGDictionary withDictionaryKey:@"grundpreis" andDistancePriceDictionary:zehnKGDictionary withDictionaryKey:@"5km"];
             
-            NSLog(@"%f", price);
+            priceLabel.text = [NSString stringWithFormat:@"%f", price];
         }
     }
-    
-    /*
     else if (distance < 10000) {
         
     }
@@ -370,7 +402,7 @@
     }
     
     
-    
+    /*
     if (kgInteger < 11) {
         
         if (distance < 5000) {

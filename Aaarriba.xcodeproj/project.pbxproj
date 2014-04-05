@@ -36,6 +36,7 @@
 		1874B8EF18D8AAAE00021B48 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874B8EE18D8AAAE00021B48 /* LoginViewController.m */; };
 		1874B8F218D8AB7200021B48 /* PricingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874B8F118D8AB7200021B48 /* PricingViewController.m */; };
 		18883D2818E30DDB00459AFF /* MapRouteEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */; };
+		18B08DE718F0347C00247502 /* ContacsEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B08DE618F0347C00247502 /* ContacsEndViewController.m */; };
 		18CC269E18DF2EB200A97936 /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC269D18DF2EB200A97936 /* locate.png */; };
 		18FAB90C18DF329F00D6125E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB90B18DF329F00D6125E /* Main_iPad.storyboard */; };
 		18FAB91018DF3C8200D6125E /* adressbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB90F18DF3C8200D6125E /* adressbook.png */; };
@@ -97,6 +98,8 @@
 		1874B8F118D8AB7200021B48 /* PricingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricingViewController.m; sourceTree = "<group>"; };
 		18883D2618E30DDB00459AFF /* MapRouteEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRouteEndViewController.h; sourceTree = "<group>"; };
 		18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteEndViewController.m; sourceTree = "<group>"; };
+		18B08DE518F0347C00247502 /* ContacsEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContacsEndViewController.h; sourceTree = "<group>"; };
+		18B08DE618F0347C00247502 /* ContacsEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContacsEndViewController.m; sourceTree = "<group>"; };
 		18CC269D18DF2EB200A97936 /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
 		18FAB90B18DF329F00D6125E /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		18FAB90F18DF3C8200D6125E /* adressbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adressbook.png; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				18883D2718E30DDB00459AFF /* MapRouteEndViewController.m */,
 				18FAB91418DF436100D6125E /* ContactsViewController.h */,
 				18FAB91518DF436100D6125E /* ContactsViewController.m */,
+				18B08DE518F0347C00247502 /* ContacsEndViewController.h */,
+				18B08DE618F0347C00247502 /* ContacsEndViewController.m */,
 			);
 			name = Pricing;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				1840387718EEBE38006659CA /* TrackingViewController.m in Sources */,
 				182DEA7618E9C37200EAE81E /* SVProgressHUD.m in Sources */,
 				1874B8F218D8AB7200021B48 /* PricingViewController.m in Sources */,
+				18B08DE718F0347C00247502 /* ContacsEndViewController.m in Sources */,
 				1874B8C518D8AA8D00021B48 /* main.m in Sources */,
 				1840387018EDBCCF006659CA /* PacketViewController.m in Sources */,
 				1874B8EF18D8AAAE00021B48 /* LoginViewController.m in Sources */,
