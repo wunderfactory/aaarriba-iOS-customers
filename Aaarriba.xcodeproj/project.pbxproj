@@ -18,6 +18,8 @@
 		184388B218DDA6C300C092D6 /* 20kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AE18DDA6C300C092D6 /* 20kg.png */; };
 		184388B318DDA6C300C092D6 /* 30kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388AF18DDA6C300C092D6 /* 30kg.png */; };
 		184388B418DDA6C300C092D6 /* 40kg.png in Resources */ = {isa = PBXBuildFile; fileRef = 184388B018DDA6C300C092D6 /* 40kg.png */; };
+		18596A0B18EFEBBF00E31A4C /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18596A0A18EFEBBF00E31A4C /* HistoryViewController.m */; };
+		18596A0E18EFEBC800E31A4C /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18596A0D18EFEBC800E31A4C /* AccountViewController.m */; };
 		1874B8B918D8AA8D00021B48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874B8B818D8AA8D00021B48 /* Foundation.framework */; };
 		1874B8BB18D8AA8D00021B48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874B8BA18D8AA8D00021B48 /* CoreGraphics.framework */; };
 		1874B8BD18D8AA8D00021B48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874B8BC18D8AA8D00021B48 /* UIKit.framework */; };
@@ -68,6 +70,10 @@
 		184388AE18DDA6C300C092D6 /* 20kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20kg.png; sourceTree = "<group>"; };
 		184388AF18DDA6C300C092D6 /* 30kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30kg.png; sourceTree = "<group>"; };
 		184388B018DDA6C300C092D6 /* 40kg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 40kg.png; sourceTree = "<group>"; };
+		18596A0918EFEBBF00E31A4C /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		18596A0A18EFEBBF00E31A4C /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		18596A0C18EFEBC800E31A4C /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		18596A0D18EFEBC800E31A4C /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		1874B8B518D8AA8D00021B48 /* Aaarriba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aaarriba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1874B8B818D8AA8D00021B48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1874B8BA18D8AA8D00021B48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -225,6 +231,10 @@
 				1840386F18EDBCCF006659CA /* PacketViewController.m */,
 				1840387518EEBE38006659CA /* TrackingViewController.h */,
 				1840387618EEBE38006659CA /* TrackingViewController.m */,
+				18596A0918EFEBBF00E31A4C /* HistoryViewController.h */,
+				18596A0A18EFEBBF00E31A4C /* HistoryViewController.m */,
+				18596A0C18EFEBC800E31A4C /* AccountViewController.h */,
+				18596A0D18EFEBC800E31A4C /* AccountViewController.m */,
 				184388B518DDA6C600C092D6 /* Images */,
 				1874B8D018D8AA8D00021B48 /* Images.xcassets */,
 				1874B8BF18D8AA8D00021B48 /* Supporting Files */,
@@ -376,6 +386,8 @@
 				1874B8C518D8AA8D00021B48 /* main.m in Sources */,
 				1840387018EDBCCF006659CA /* PacketViewController.m in Sources */,
 				1874B8EF18D8AAAE00021B48 /* LoginViewController.m in Sources */,
+				18596A0B18EFEBBF00E31A4C /* HistoryViewController.m in Sources */,
+				18596A0E18EFEBC800E31A4C /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

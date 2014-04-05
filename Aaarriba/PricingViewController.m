@@ -289,7 +289,31 @@
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     
     
-            
+    
+    if (distance < 5000) {
+        
+    }
+    else if (distance < 10000) {
+        
+    }
+    else if (distance < 15000) {
+        
+    }
+    else if (distance < 20000) {
+        
+    }
+    else if (distance < 25000) {
+        
+    }
+    else if (distance < 30000) {
+        
+    }
+    else if (distance < 35000) {
+        
+    }
+    
+    
+    
     if (kgInteger < 11) {
         
         if (distance < 5000) {
