@@ -73,6 +73,53 @@
 - (void)loadPricingData
 {
     zehnKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                        [NSNumber numberWithFloat:12.50], @"5km",
+                        [NSNumber numberWithFloat:18.00], @"10km",
+                        [NSNumber numberWithFloat:24.00], @"15km",
+                        [NSNumber numberWithFloat:30.50], @"20km",
+                        [NSNumber numberWithFloat:37.50], @"25km",
+                        [NSNumber numberWithFloat:43.50], @"30km",
+                        [NSNumber numberWithFloat:49.50], @"35km",
+                        [NSNumber numberWithFloat:7.50], @"grundpreis",
+                        nil];
+    
+    
+    zwanzigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                           [NSNumber numberWithFloat:13.50], @"5km",
+                           [NSNumber numberWithFloat:19.00], @"10km",
+                           [NSNumber numberWithFloat:25.00], @"15km",
+                           [NSNumber numberWithFloat:31.50], @"20km",
+                           [NSNumber numberWithFloat:38.50], @"25km",
+                           [NSNumber numberWithFloat:44.50], @"30km",
+                           [NSNumber numberWithFloat:50.50], @"35km",
+                           [NSNumber numberWithFloat:8.50], @"grundpreis",
+                           nil];
+    
+    dreissigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            [NSNumber numberWithFloat:20.00], @"5km",
+                            [NSNumber numberWithFloat:27.00], @"10km",
+                            [NSNumber numberWithFloat:34.50], @"15km",
+                            [NSNumber numberWithFloat:42.00], @"20km",
+                            [NSNumber numberWithFloat:50.00], @"25km",
+                            [NSNumber numberWithFloat:57.50], @"30km",
+                            [NSNumber numberWithFloat:64.00], @"35km",
+                            [NSNumber numberWithFloat:15.00], @"grundpreis",
+                            nil];
+    
+    vierzigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                           [NSNumber numberWithFloat:30.00], @"5km",
+                           [NSNumber numberWithFloat:37.00], @"10km",
+                           [NSNumber numberWithFloat:44.50], @"15km",
+                           [NSNumber numberWithFloat:52.00], @"20km",
+                           [NSNumber numberWithFloat:60.00], @"25km",
+                           [NSNumber numberWithFloat:67.00], @"30km",
+                           [NSNumber numberWithFloat:77.50], @"35km",
+                           [NSNumber numberWithFloat:25.00], @"grundpreis",
+                           nil];
+    
+    
+    /*
+    zehnKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                         @"14,78", @"5km",
                         @"21,42", @"10km",
                         @"28,56", @"15km",
@@ -116,6 +163,7 @@
                            @"92,22", @"35km",
                            @"25,00", @"grundpreis",
                            nil];
+     */
 }
 
 
@@ -288,11 +336,20 @@
     
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     
-    
+    distance = 4000;
+    kgInteger = 5;
     
     if (distance < 5000) {
         
+        if (kgInteger < 11) {
+            
+            float price = [self calculatePriceWithWeight:kgInteger basePriceDictionary:zehnKGDictionary withDictionaryKey:@"grundpreis" andDistancePriceDictionary:zehnKGDictionary withDictionaryKey:@"5km"];
+            
+            NSLog(@"%f", price);
+        }
     }
+    
+    /*
     else if (distance < 10000) {
         
     }
@@ -418,7 +475,22 @@
         else if (distance < 35000) {
             priceLabel.text = [vierzigKGDictionary valueForKey:@"35km"];
         }
-    }
+    }*/
+}
+
+
+- (float)calculatePriceWithWeight:(int)weightInteger basePriceDictionary:(NSMutableDictionary *)basePriceDictonary withDictionaryKey:(NSString *)baseKey andDistancePriceDictionary:(NSMutableDictionary *)distancePriceDictionary withDictionaryKey:(NSString *)distanceKey
+{
+    float variance = weightInteger;
+    // Percentage
+    variance = variance * 0.1;
+    
+    float basePrice = [[basePriceDictonary valueForKey:baseKey] floatValue] * variance;
+    
+    float distancePrice = [[basePriceDictonary valueForKey:distanceKey] floatValue];
+    float price = basePrice + distancePrice;
+    
+    return price;
 }
 
 
