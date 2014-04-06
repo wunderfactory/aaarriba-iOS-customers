@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface ContactsViewController : UIViewController
+@interface ContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ABPeoplePickerNavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *addressTableView;
 
 @end

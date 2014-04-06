@@ -10,9 +10,17 @@
 
 @interface ContactsViewController ()
 
+@property (strong, nonatomic) NSMutableArray *contactsArray;
+@property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookController;
+
 @end
 
+
 @implementation ContactsViewController
+
+@synthesize addressTableView, contactsArray;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +35,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    addressTableView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,5 +56,38 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 1;
+}
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"CustomCell";
+    CustomCell *cell;
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
+    // Configure the cell...
+    cell.productLabel.text = productList[indexPath.row];
+    return cell;
+}
+*/
+
+
 
 @end

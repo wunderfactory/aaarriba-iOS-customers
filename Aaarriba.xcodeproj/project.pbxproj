@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808CC1418E179B500973BED /* CoreLocation.framework */; };
 		1814062918E064F0002AA71F /* DPWebConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1814062818E064F0002AA71F /* DPWebConnector.m */; };
+		181545E118F1417300F85C07 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181545E018F1417300F85C07 /* AddressBook.framework */; };
+		181545E318F1417900F85C07 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181545E218F1417900F85C07 /* AddressBookUI.framework */; };
 		182DEA7618E9C37200EAE81E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DEA7518E9C37200EAE81E /* SVProgressHUD.m */; };
 		1840387018EDBCCF006659CA /* PacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840386F18EDBCCF006659CA /* PacketViewController.m */; };
 		1840387218EDBD3B006659CA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1840387118EDBD3B006659CA /* AVFoundation.framework */; };
@@ -59,6 +61,8 @@
 		1808CC1418E179B500973BED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1814062718E064F0002AA71F /* DPWebConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPWebConnector.h; sourceTree = "<group>"; };
 		1814062818E064F0002AA71F /* DPWebConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPWebConnector.m; sourceTree = "<group>"; };
+		181545E018F1417300F85C07 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		181545E218F1417900F85C07 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		182DEA7418E9C37200EAE81E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		182DEA7518E9C37200EAE81E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		1840386E18EDBCCF006659CA /* PacketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketViewController.h; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181545E318F1417900F85C07 /* AddressBookUI.framework in Frameworks */,
+				181545E118F1417300F85C07 /* AddressBook.framework in Frameworks */,
 				1840387418EDC835006659CA /* AudioToolbox.framework in Frameworks */,
 				1840387218EDBD3B006659CA /* AVFoundation.framework in Frameworks */,
 				1808CC1518E179B500973BED /* CoreLocation.framework in Frameworks */,
@@ -209,6 +215,8 @@
 		1874B8B718D8AA8D00021B48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				181545E218F1417900F85C07 /* AddressBookUI.framework */,
+				181545E018F1417300F85C07 /* AddressBook.framework */,
 				1840387318EDC835006659CA /* AudioToolbox.framework */,
 				1840387118EDBD3B006659CA /* AVFoundation.framework */,
 				1808CC1418E179B500973BED /* CoreLocation.framework */,
