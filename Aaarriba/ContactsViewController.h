@@ -10,8 +10,6 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface ContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ABPeoplePickerNavigationControllerDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *addressTableView;
+@interface ContactsViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate>
 
 @end

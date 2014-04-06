@@ -13,12 +13,14 @@
 @property (strong, nonatomic) NSMutableArray *contactsArray;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookController;
 
+- (void)showAddressbook;
+
 @end
 
 
 @implementation ContactsViewController
 
-@synthesize addressTableView, contactsArray;
+@synthesize contactsArray, addressBookController;
 
 
 
@@ -35,9 +37,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
+    contactsArray = [[NSMutableArray alloc] init];
     
-    addressTableView.delegate = self;
+    sleep(5);
+    
+    [self showAddressbook];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +51,73 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (void)showAddressbook
+{
+    addressBookController = [[ABPeoplePickerNavigationController alloc] init];
+    [addressBookController setPeoplePickerDelegate:self];
+    [self presentViewController:addressBookController animated:YES completion:nil];
+}
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [addressBookController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    NSMutableDictionary *contactInfoDictionary = [[NSMutableDictionary alloc] initWithObjects:@[@"", @"", @"", @"", @""] forKeys:@[@"firstName", @"lastName", @"address", @"zip", @"city"]];
+    
+    CFTypeRef generalCFObject = ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    
+    if (generalCFObject) {
+        [contactInfoDictionary setObject:(__bridge NSString *)generalCFObject forKey:@"firstname"];
+        CFRelease(generalCFObject);
+    }
+    
+    
+    
+    generalCFObject = ABRecordCopyValue(person, kABPersonLastNameProperty);
+    
+    if (generalCFObject) {
+        [contactInfoDictionary setObject:(__bridge NSString *)generalCFObject forKey:@"lastname"];
+        CFRelease(generalCFObject);
+    }
+    
+    
+    
+    ABMultiValueRef addressRef = ABRecordCopyValue(person, kABPersonAddressProperty);
+    
+    if (ABMultiValueGetCount(addressRef) > 0) {
+        NSDictionary *addressDict = (__bridge NSDictionary *)ABMultiValueCopyValueAtIndex(addressRef, 0);
+        
+        [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressStreetKey] forKey:@"address"];
+        [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressZIPKey] forKey:@"zipCode"];
+        [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressCityKey] forKey:@"city"];
+    }
+    
+    CFRelease(generalCFObject);
+    
+    
+    
+    [contactsArray addObject:contactInfoDictionary];
+    
+    NSLog(@"%@", contactsArray);
+    
+    [addressBookController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    return NO;
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    return NO;
+}
+
 
 /*
 #pragma mark - Navigation
@@ -56,38 +129,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return 1;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"CustomCell";
-    CustomCell *cell;
-    
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    cell.accessoryType = UITableViewCellAccessoryDetailButton;
-    
-    // Configure the cell...
-    cell.productLabel.text = productList[indexPath.row];
-    return cell;
-}
-*/
-
 
 
 @end
