@@ -8,13 +8,18 @@
 
 #import "PricingViewController.h"
 #import <MapKit/MapKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface PricingViewController () <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface PricingViewController () <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, ABPeoplePickerNavigationControllerDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *zehnKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *zwanzigKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *dreissigKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *vierzigKGDictionary;
+
+@property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookController;
+@property (strong, nonatomic) NSString *addressContactStartString;
 
 @property NSInteger kgInteger;
 
@@ -23,7 +28,7 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, packetSizePickerView;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, packetSizePickerView, addressBookController, addressContactStartString;
 
 
 
@@ -54,7 +59,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     
     [self loadPricingData];
 }
@@ -116,54 +120,6 @@
                            [NSNumber numberWithFloat:77.50], @"35km",
                            [NSNumber numberWithFloat:25.00], @"grundpreis",
                            nil];
-    
-    
-    /*
-    zehnKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                        @"14,78", @"5km",
-                        @"21,42", @"10km",
-                        @"28,56", @"15km",
-                        @"36,29", @"20km",
-                        @"44,62", @"25km",
-                        @"51,76", @"30km",
-                        @"58,90", @"35km",
-                        @"7,50", @"grundpreis",
-                        nil];
-    
-    
-    zwanzigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                           @"16,06", @"5km",
-                           @"22,61", @"10km",
-                           @"29,75", @"15km",
-                           @"37,48", @"20km",
-                           @"45,81", @"25km",
-                           @"52,95", @"30km",
-                           @"60,09", @"35km",
-                           @"8,50", @"grundpreis",
-                           nil];
-    
-    dreissigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"23,80", @"5km",
-                            @"32,13", @"10km",
-                            @"41,05", @"15km",
-                            @"49,98", @"20km",
-                            @"59,50", @"25km",
-                            @"67,83", @"30km",
-                            @"76,16", @"35km",
-                            @"15,00", @"grundpreis",
-                            nil];
-    
-    vierzigKGDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                           @"35,70", @"5km",
-                           @"44,03", @"10km",
-                           @"52,95", @"15km",
-                           @"61,88", @"20km",
-                           @"71,40", @"25km",
-                           @"79,73", @"30km",
-                           @"92,22", @"35km",
-                           @"25,00", @"grundpreis",
-                           nil];
-     */
 }
 
 
@@ -171,14 +127,19 @@
 
 - (void)createContents
 {
-    kgInteger = 0;
-    
     [packetSizePickerView setHidden:YES];
     
     
     
-    [packetRouteBeginTextField setHidden:YES];
-    [packetRouteEndTextField setHidden:YES];
+    if (kgInteger == 0) {
+        [packetRouteBeginTextField setHidden:YES];
+        [packetRouteEndTextField setHidden:YES];
+        
+        NSLog(@"%ld", (long)kgInteger);
+    }
+    else {
+        packetRouteBeginTextField.text = addressContactStartString;
+    }
     
     [locateStartButton setHidden:YES];
     [locateEndButton setHidden:YES];
@@ -316,7 +277,8 @@
 
 - (IBAction)contactsBeginButton:(id)sender {
     
-    [self performSegueWithIdentifier:@"pricingToStartAddress" sender:self];
+    //[self performSegueWithIdentifier:@"pricingToStartAddress" sender:self];
+    [self showAddressbook];
 }
 
 - (IBAction)contactsEndButton:(id)sender {
@@ -511,7 +473,7 @@
 }
 
 
-- (float)calculatePriceWithWeight:(int)weightInteger basePriceDictionary:(NSMutableDictionary *)basePriceDictonary withDictionaryKey:(NSString *)baseKey andDistancePriceDictionary:(NSMutableDictionary *)distancePriceDictionary withDictionaryKey:(NSString *)distanceKey
+- (float)calculatePriceWithWeight:(NSInteger)weightInteger basePriceDictionary:(NSMutableDictionary *)basePriceDictonary withDictionaryKey:(NSString *)baseKey andDistancePriceDictionary:(NSMutableDictionary *)distancePriceDictionary withDictionaryKey:(NSString *)distanceKey
 {
     float variance = weightInteger;
     // Percentage
@@ -523,6 +485,74 @@
     float price = basePrice + distancePrice;
     
     return price;
+}
+
+
+
+
+- (void)showAddressbook
+{
+    addressBookController = [[ABPeoplePickerNavigationController alloc] init];
+    [addressBookController setPeoplePickerDelegate:self];
+    [self presentViewController:addressBookController animated:YES completion:nil];
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [addressBookController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    NSMutableDictionary *contactInfoDictionary = [[NSMutableDictionary alloc] initWithObjects:@[@"", @"", @"", @"", @""] forKeys:@[@"firstName", @"lastName", @"address", @"zip", @"city"]];
+    
+    CFTypeRef generalCFObject = ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    
+    if (generalCFObject) {
+        [contactInfoDictionary setObject:(__bridge NSString *)generalCFObject forKey:@"firstname"];
+        CFRelease(generalCFObject);
+    }
+    
+    
+    
+    generalCFObject = ABRecordCopyValue(person, kABPersonLastNameProperty);
+    
+    if (generalCFObject) {
+        [contactInfoDictionary setObject:(__bridge NSString *)generalCFObject forKey:@"lastname"];
+        CFRelease(generalCFObject);
+    }
+    
+    
+    
+    ABMultiValueRef addressRef = ABRecordCopyValue(person, kABPersonAddressProperty);
+    
+    if (ABMultiValueGetCount(addressRef) > 0) {
+        NSDictionary *addressDict = (__bridge NSDictionary *)ABMultiValueCopyValueAtIndex(addressRef, 0);
+        
+        [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressStreetKey] forKey:@"address"];
+        [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressZIPKey] forKey:@"zipCode"];
+        [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressCityKey] forKey:@"city"];
+    }
+    
+    CFRelease(generalCFObject);
+    
+    
+    
+    addressContactStartString = [NSString stringWithFormat:@"%@, %@, %@", [contactInfoDictionary valueForKey:@"address"], [contactInfoDictionary valueForKey:@"zipCode"], [contactInfoDictionary valueForKey:@"city"]];
+    
+    
+    [packetRouteBeginTextField setHidden:NO];
+    
+    [addressBookController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    return NO;
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    return NO;
 }
 
 

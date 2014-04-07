@@ -41,7 +41,6 @@
     
     contactsArray = [[NSMutableArray alloc] init];
     
-    sleep(5);
     
     [self showAddressbook];
 }
