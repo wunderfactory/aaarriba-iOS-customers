@@ -134,12 +134,13 @@
     if (kgInteger == 0) {
         [packetRouteBeginTextField setHidden:YES];
         [packetRouteEndTextField setHidden:YES];
-        
-        NSLog(@"%ld", (long)kgInteger);
     }
+    
     else {
         packetRouteBeginTextField.text = addressContactStartString;
     }
+    
+    
     
     [locateStartButton setHidden:YES];
     [locateEndButton setHidden:YES];
@@ -540,9 +541,8 @@
     
     
     addressContactStartString = [NSString stringWithFormat:@"%@, %@, %@", [contactInfoDictionary valueForKey:@"address"], [contactInfoDictionary valueForKey:@"zipCode"], [contactInfoDictionary valueForKey:@"city"]];
+    [[NSUserDefaults standardUserDefaults] setObject:addressContactStartString forKey:@"userStartAddress"];
     
-    
-    [packetRouteBeginTextField setHidden:NO];
     
     [addressBookController dismissViewControllerAnimated:YES completion:nil];
     
