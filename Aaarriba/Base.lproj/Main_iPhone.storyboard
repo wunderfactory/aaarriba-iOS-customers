@@ -237,51 +237,11 @@
                         <outlet property="priceLabel" destination="HaD-LG-L7O" id="Jvy-Du-IC6"/>
                         <segue destination="Jgc-B9-PMd" kind="push" identifier="pricingToMapView" id="kKy-2B-e4i"/>
                         <segue destination="Pen-Jb-usP" kind="push" identifier="pricingToEndMapView" id="TI4-cT-V9t"/>
-                        <segue destination="wKK-jr-SEh" kind="push" identifier="pricingToStartAddress" id="GsJ-lU-k9P"/>
-                        <segue destination="12h-ux-Q5c" kind="push" identifier="pricingToEndAddress" id="PIu-kP-jxf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj9-9M-Ws2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1092" y="-405"/>
-        </scene>
-        <!--Contacs End View Controller-->
-        <scene sceneID="qtU-MS-oat">
-            <objects>
-                <viewController id="12h-ux-Q5c" customClass="ContacsEndViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hPX-zH-Zbj"/>
-                        <viewControllerLayoutGuide type="bottom" id="zS6-0N-5ek"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NRC-w5-UGI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="9tW-mB-VyZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rxj-LL-IUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2035" y="-176"/>
-        </scene>
-        <!--Contacts View Controller-->
-        <scene sceneID="Ia3-fh-UwP">
-            <objects>
-                <viewController storyboardIdentifier="ContactsViewController" id="wKK-jr-SEh" customClass="ContactsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1QM-5j-VrZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="vm1-tH-C7b"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="c56-vx-Lix">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mf9-h9-c2W"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6W5-ka-l2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1634" y="-176"/>
         </scene>
         <!--Map Route View Controller-->
         <scene sceneID="8Mf-0U-skb">
@@ -324,7 +284,7 @@
                 </searchDisplayController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APj-b9-xKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-890"/>
+            <point key="canvasLocation" x="1702" y="-405"/>
         </scene>
         <!--Map Route End View Controller-->
         <scene sceneID="2XZ-Hi-GfF">
@@ -358,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsF-Tw-Jb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2035" y="-890"/>
+            <point key="canvasLocation" x="2103" y="-405"/>
         </scene>
         <!--Account View Controller - Konto-->
         <scene sceneID="7ae-uV-VeY">

@@ -18,8 +18,10 @@
 @property (strong, nonatomic) NSMutableDictionary *dreissigKGDictionary;
 @property (strong, nonatomic) NSMutableDictionary *vierzigKGDictionary;
 
-@property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookController;
+@property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookStartController;
+@property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookEndController;
 @property (strong, nonatomic) NSString *addressContactStartString;
+@property BOOL addressStartEnd;
 
 @property NSInteger kgInteger;
 
@@ -28,7 +30,7 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, packetSizePickerView, addressBookController, addressContactStartString;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, packetSizePickerView, addressBookStartController, addressBookEndController, addressContactStartString, addressStartEnd;
 
 
 
@@ -290,18 +292,6 @@
 
 
 
-- (IBAction)contactsBeginButton:(id)sender {
-    
-    //[self performSegueWithIdentifier:@"pricingToStartAddress" sender:self];
-    [self showAddressbook];
-}
-
-- (IBAction)contactsEndButton:(id)sender {
-
-    [self performSegueWithIdentifier:@"pricingToEndAddress" sender:self];
-}
-
-
 
 
 
@@ -518,22 +508,54 @@
 
 
 
+
 #pragma mark Contact Address
+
+
+- (IBAction)contactsBeginButton:(id)sender {
+    
+    //[self performSegueWithIdentifier:@"pricingToStartAddress" sender:self];
+    [self showAddressbook];
+    
+    addressStartEnd = YES;
+}
+
+- (IBAction)contactsEndButton:(id)sender {
+    
+    //[self performSegueWithIdentifier:@"pricingToEndAddress" sender:self];
+    [self showAddressbook];
+    
+    addressStartEnd = NO;
+}
+
+
 
 // Addressbook gets presented
 
 - (void)showAddressbook
 {
-    addressBookController = [[ABPeoplePickerNavigationController alloc] init];
-    [addressBookController setPeoplePickerDelegate:self];
-    [self presentViewController:addressBookController animated:YES completion:nil];
+    if (addressStartEnd == YES) {
+        addressBookStartController = [[ABPeoplePickerNavigationController alloc] init];
+        [addressBookStartController setPeoplePickerDelegate:self];
+        [self presentViewController:addressBookStartController animated:YES completion:nil];
+    }
+    if (addressStartEnd == NO) {
+        addressBookEndController = [[ABPeoplePickerNavigationController alloc] init];
+        [addressBookEndController setPeoplePickerDelegate:self];
+        [self presentViewController:addressBookEndController animated:YES completion:nil];
+    }
 }
 
 // Case: user cancels UIView
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
-    [addressBookController dismissViewControllerAnimated:YES completion:nil];
+    if (addressStartEnd == YES) {
+        [addressBookStartController dismissViewControllerAnimated:YES completion:nil];
+    }
+    if (addressStartEnd == NO) {
+        [addressBookEndController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 
@@ -585,13 +607,22 @@
     // Load string with contact information
     
     addressContactStartString = [NSString stringWithFormat:@"%@, %@, %@", [contactInfoDictionary valueForKey:@"address"], [contactInfoDictionary valueForKey:@"zipCode"], [contactInfoDictionary valueForKey:@"city"]];
-    [[NSUserDefaults standardUserDefaults] setObject:addressContactStartString forKey:@"userStartAddress"];
+    
+    
+    
+    if (addressStartEnd == YES) {
+        [[NSUserDefaults standardUserDefaults] setObject:addressContactStartString forKey:@"userStartAddress"];
+    }
+    if (addressStartEnd == NO) {
+        [[NSUserDefaults standardUserDefaults] setObject:addressContactStartString forKey:@"userEndAddress"];
+    }
     
     
     
     // Dismiss ViewController
     
-    [addressBookController dismissViewControllerAnimated:YES completion:nil];
+    [addressBookStartController dismissViewControllerAnimated:YES completion:nil];
+    [addressBookEndController dismissViewControllerAnimated:YES completion:nil];
     
     
     return NO;
