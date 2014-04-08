@@ -127,9 +127,12 @@
 
 - (void)createContents
 {
+    // Hide UI Elements
+    
     [packetSizePickerView setHidden:YES];
     
-    
+    [locateStartButton setHidden:YES];
+    [locateEndButton setHidden:YES];
     
     if (kgInteger == 0) {
         [packetRouteBeginTextField setHidden:YES];
@@ -141,20 +144,13 @@
     }
     
     
-    
-    [locateStartButton setHidden:YES];
-    [locateEndButton setHidden:YES];
-    
-    
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddressCoorddinates"] == nil ||  [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndAddressCoorddinates"] == nil) {
-        [calculatePriceButton setHidden:YES];
-    }
-    else {
-        [calculatePriceButton setHidden:NO];
-    }
-    
     [calculatePriceButton setHidden:NO];
     
+    
+    
+    
+    
+    // Load TextFields with stored User Address
     
     packetRouteBeginTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddress"];
     packetRouteEndTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndAddress"];
@@ -166,9 +162,17 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    // Hide UI Elements (TextFields, UIPickerView, etc.) when user touches the view
+    
     [packetRouteBeginTextField resignFirstResponder];
     [packetRouteEndTextField resignFirstResponder];
     [packetSizePickerView setHidden:YES];
+    
+    
+    
+    
+    
+    // Hide TextFields only when the Button is empty ("Gewicht")
     
     if (![packetSizeButton.titleLabel.text isEqualToString:@"Gewicht"]) {
         [packetRouteBeginTextField setHidden:NO];
@@ -189,12 +193,18 @@
 
 - (IBAction)packetSizeButton:(id)sender
 {
+    // Show PickerView as soon as the Button gets touched
     [packetSizePickerView setHidden:NO];
 }
 
 
 
+
+
+
 #pragma mark Picker View Data Source
+
+// Setting up the packet PickerView
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -237,8 +247,12 @@
     id kgInt = [zahlenArray objectAtIndex:row];
     kgInteger = [kgInt integerValue];
     
+    
+    // Set title for PickerView with weight
+    
     packetSizeButton.titleLabel.text = [NSString stringWithFormat:@"%@kg", [zahlenArray objectAtIndex:row]];
 }
+
 
 
 
@@ -307,6 +321,8 @@
     
     
     
+    // distance is the beeline
+    
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     
     
@@ -335,6 +351,12 @@
     NSLog(@"%@", responseDict);
     */
     
+    
+    
+    
+    
+    // Detecting the distance between start position and end position
+    // After that, the price gets calculated with the weight of its packet
     
     if (distance < 5000) {
         
@@ -474,6 +496,9 @@
 }
 
 
+
+// Method for calculating the price
+
 - (float)calculatePriceWithWeight:(NSInteger)weightInteger basePriceDictionary:(NSMutableDictionary *)basePriceDictonary withDictionaryKey:(NSString *)baseKey andDistancePriceDictionary:(NSMutableDictionary *)distancePriceDictionary withDictionaryKey:(NSString *)distanceKey
 {
     float variance = weightInteger;
@@ -491,12 +516,20 @@
 
 
 
+
+
+#pragma mark Contact Address
+
+// Addressbook gets presented
+
 - (void)showAddressbook
 {
     addressBookController = [[ABPeoplePickerNavigationController alloc] init];
     [addressBookController setPeoplePickerDelegate:self];
     [self presentViewController:addressBookController animated:YES completion:nil];
 }
+
+// Case: user cancels UIView
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
@@ -508,6 +541,10 @@
 {
     NSMutableDictionary *contactInfoDictionary = [[NSMutableDictionary alloc] initWithObjects:@[@"", @"", @"", @"", @""] forKeys:@[@"firstName", @"lastName", @"address", @"zip", @"city"]];
     
+    
+    
+    // First name
+    
     CFTypeRef generalCFObject = ABRecordCopyValue(person, kABPersonFirstNameProperty);
     
     if (generalCFObject) {
@@ -517,6 +554,8 @@
     
     
     
+    // Sir name
+    
     generalCFObject = ABRecordCopyValue(person, kABPersonLastNameProperty);
     
     if (generalCFObject) {
@@ -525,6 +564,8 @@
     }
     
     
+    
+    // Address
     
     ABMultiValueRef addressRef = ABRecordCopyValue(person, kABPersonAddressProperty);
     
@@ -536,13 +577,19 @@
         [contactInfoDictionary setObject:[addressDict objectForKey:(NSString *)kABPersonAddressCityKey] forKey:@"city"];
     }
     
+    
     CFRelease(generalCFObject);
     
     
     
+    // Load string with contact information
+    
     addressContactStartString = [NSString stringWithFormat:@"%@, %@, %@", [contactInfoDictionary valueForKey:@"address"], [contactInfoDictionary valueForKey:@"zipCode"], [contactInfoDictionary valueForKey:@"city"]];
     [[NSUserDefaults standardUserDefaults] setObject:addressContactStartString forKey:@"userStartAddress"];
     
+    
+    
+    // Dismiss ViewController
     
     [addressBookController dismissViewControllerAnimated:YES completion:nil];
     
@@ -550,7 +597,7 @@
     return NO;
 }
 
--(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
 {
     return NO;
 }

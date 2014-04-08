@@ -74,4 +74,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 
+
+#pragma mark Contact Address
+
 @end
