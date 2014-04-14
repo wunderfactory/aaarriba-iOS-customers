@@ -19,18 +19,17 @@
 
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+
 
 #pragma mark Packet size
 
 @property (weak, nonatomic) IBOutlet UIButton *packetSizeButton;
 - (IBAction)packetSizeButton:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIPickerView *packetSizePickerView;
+@property (weak, nonatomic) IBOutlet UIScrollView *weightScrollView;
 
-
-
-
-#pragma mark Picker View Data Source
 
 
 

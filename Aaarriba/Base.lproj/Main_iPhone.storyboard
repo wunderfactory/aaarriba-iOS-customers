@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eSr-y9-9ld">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eSr-y9-9ld">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -115,16 +115,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-yn-yj5">
-                                <rect key="frame" x="20" y="67" width="48" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-WC-fl8">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Zurück">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetAnimationButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="Qud-Bo-C5H"/>
-                                </connections>
-                            </button>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Von:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riB-S4-doh">
                                 <rect key="frame" x="24" y="278" width="209" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -180,16 +174,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UwY-wZ-KaX">
-                                <rect key="frame" x="0.0" y="334" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Em3-zt-akh" id="PAZ-Yk-G0d"/>
-                                    <outlet property="delegate" destination="Em3-zt-akh" id="oXp-hz-vNB"/>
-                                </connections>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmt-O3-Ytb">
-                                <rect key="frame" x="137" y="129" width="57" height="30"/>
+                                <rect key="frame" x="132" y="178" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Gewicht">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,6 +204,10 @@
                                     <action selector="contactsEndButton:" destination="Em3-zt-akh" eventType="touchUpInside" id="YaJ-U3-qg1"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lj3-Fw-S09">
+                                <rect key="frame" x="0.0" y="64" width="320" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -225,6 +215,7 @@
                     <navigationItem key="navigationItem" title="Preisliste" id="KD2-yc-5w2"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="r7y-WC-fl8" id="8xm-EB-aWC"/>
                         <outlet property="calculatePriceButton" destination="k2W-Ko-yUg" id="O9n-Hb-qq3"/>
                         <outlet property="contactsBeginButton" destination="dLY-fV-KKn" id="s2Y-1x-cbO"/>
                         <outlet property="contactsEndButton" destination="QyC-c3-MQd" id="4H2-4z-IZI"/>
@@ -233,8 +224,8 @@
                         <outlet property="packetRouteBeginTextField" destination="riB-S4-doh" id="WCW-Kd-aeG"/>
                         <outlet property="packetRouteEndTextField" destination="ZOe-hY-kbo" id="e9s-qW-JlF"/>
                         <outlet property="packetSizeButton" destination="Pmt-O3-Ytb" id="16r-lt-J6a"/>
-                        <outlet property="packetSizePickerView" destination="UwY-wZ-KaX" id="KfI-mL-y0j"/>
                         <outlet property="priceLabel" destination="HaD-LG-L7O" id="Jvy-Du-IC6"/>
+                        <outlet property="weightScrollView" destination="Lj3-Fw-S09" id="R3i-EJ-PeQ"/>
                         <segue destination="Jgc-B9-PMd" kind="push" identifier="pricingToMapView" id="kKy-2B-e4i"/>
                         <segue destination="Pen-Jb-usP" kind="push" identifier="pricingToEndMapView" id="TI4-cT-V9t"/>
                     </connections>

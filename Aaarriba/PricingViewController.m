@@ -21,16 +21,20 @@
 @property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookStartController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *addressBookEndController;
 @property (strong, nonatomic) NSString *addressContactStartString;
+
 @property BOOL addressStartEnd;
 
 @property NSInteger kgInteger;
+
+@property (strong, nonatomic) UIButton *weightButton;
+
 
 @end
 
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, packetSizePickerView, addressBookStartController, addressBookEndController, addressContactStartString, addressStartEnd;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, addressBookStartController, addressBookEndController, addressContactStartString, addressStartEnd, contactsBeginButton, contactsEndButton, weightButton, weightScrollView;
 
 
 
@@ -131,10 +135,24 @@
 {
     // Hide UI Elements
     
-    [packetSizePickerView setHidden:YES];
+    [weightScrollView setHidden:YES];
+    
+    
+    
+    // Hide user location buttons
     
     [locateStartButton setHidden:YES];
     [locateEndButton setHidden:YES];
+    
+    [contactsBeginButton setHidden:YES];
+    [contactsEndButton setHidden:YES];
+    
+    
+    
+    [priceLabel setHidden:YES];
+    [calculatePriceButton setHidden:YES];
+    
+    
     
     if (kgInteger == 0) {
         [packetRouteBeginTextField setHidden:YES];
@@ -146,8 +164,8 @@
     }
     
     
-    [calculatePriceButton setHidden:NO];
     
+    [self createScrollMenu];
     
     
     
@@ -162,15 +180,88 @@
 
 
 
+#pragma mark Scroll menu
+
+- (void)createScrollMenu
+{
+    weightScrollView.delegate = self;
+    
+    int x = 0;
+    for (int i = 1; i < 41; i++) {
+        weightButton = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 100, 100)];
+        [weightButton setTitle:[NSString stringWithFormat:@"%dkg", i] forState:UIControlStateNormal];
+        [weightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        [weightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        weightButton.tag = i;
+        
+        [weightScrollView addSubview:weightButton];
+        
+        x += weightButton.frame.size.width;
+    }
+    
+    weightScrollView.contentSize = CGSizeMake(x, weightScrollView.frame.size.height);
+    weightScrollView.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:158.0/255.0 blue:224.0/255.0 alpha:1.0];
+}
+
+
+
+
+
+// Setting the value
+
+- (void)buttonPressed:(UIButton *)button
+{
+    kgInteger = button.tag;
+    packetSizeButton.titleLabel.text = [NSString stringWithFormat:@"%ldkg", (long)kgInteger];
+    
+    
+    
+    
+    // Hide TextFields only when the Button is empty ("Gewicht")
+    
+    if (![packetSizeButton.titleLabel.text isEqualToString:@"Gewicht"]) {
+        [packetRouteBeginTextField setHidden:NO];
+    }
+    if (![packetRouteBeginTextField.text isEqualToString:@""]) {
+        [packetRouteEndTextField setHidden:NO];
+    }
+}
+
+
+
+
+
+
+
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // Hide UI Elements (TextFields, UIPickerView, etc.) when user touches the view
     
     [packetRouteBeginTextField resignFirstResponder];
     [packetRouteEndTextField resignFirstResponder];
-    [packetSizePickerView setHidden:YES];
+    [weightScrollView setHidden:YES];
     
     
+    
+
+    
+    // Hide price buttons when user is selecting the size of his packet
+    
+    if (![packetRouteBeginTextField.text isEqualToString:@""] && ![packetRouteEndTextField.text isEqualToString:@""]) {
+        if (weightScrollView.isHidden == YES) {
+            [calculatePriceButton setHidden:NO];
+            [priceLabel setHidden:NO];
+        }
+    }
+    
+    
+    
+    [locateStartButton setHidden:YES];
+    [locateEndButton setHidden:YES];
+    [contactsBeginButton setHidden:YES];
+    [contactsEndButton setHidden:YES];
     
     
     
@@ -196,7 +287,12 @@
 - (IBAction)packetSizeButton:(id)sender
 {
     // Show PickerView as soon as the Button gets touched
-    [packetSizePickerView setHidden:NO];
+    [weightScrollView setHidden:NO];
+    
+    if (weightScrollView.isHidden == NO) {
+        [calculatePriceButton setHidden:YES];
+        [priceLabel setHidden:YES];
+    }
 }
 
 
@@ -207,6 +303,7 @@
 #pragma mark Picker View Data Source
 
 // Setting up the packet PickerView
+
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -225,6 +322,7 @@
 }
 
 
+/*
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSMutableArray *zahlenArray = [NSMutableArray array];
@@ -235,7 +333,8 @@
     
     return [zahlenArray objectAtIndex:row];
 }
-
+*/
+ 
 
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -269,12 +368,18 @@
     
     [locateStartButton setHidden:NO];
     [locateEndButton setHidden:YES];
+    
+    [contactsBeginButton setHidden:NO];
+    [contactsEndButton setHidden:YES];
 }
 
 - (IBAction)packetRouteEndTextField:(id)sender {
     
     [locateStartButton setHidden:YES];
     [locateEndButton setHidden:NO];
+    
+    [contactsBeginButton setHidden:YES];
+    [contactsEndButton setHidden:NO];
 }
 
 
@@ -487,11 +592,13 @@
 
 
 
+
 // Method for calculating the price
 
 - (float)calculatePriceWithWeight:(NSInteger)weightInteger basePriceDictionary:(NSMutableDictionary *)basePriceDictonary withDictionaryKey:(NSString *)baseKey andDistancePriceDictionary:(NSMutableDictionary *)distancePriceDictionary withDictionaryKey:(NSString *)distanceKey
 {
     float variance = weightInteger;
+    
     // Percentage
     variance = variance * 0.1;
     
@@ -546,6 +653,7 @@
     }
 }
 
+
 // Case: user cancels UIView
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
@@ -559,9 +667,12 @@
 }
 
 
+
+
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
     NSMutableDictionary *contactInfoDictionary = [[NSMutableDictionary alloc] initWithObjects:@[@"", @"", @"", @"", @""] forKeys:@[@"firstName", @"lastName", @"address", @"zip", @"city"]];
+    
     
     
     
@@ -604,6 +715,7 @@
     
     
     
+    
     // Load string with contact information
     
     addressContactStartString = [NSString stringWithFormat:@"%@, %@, %@", [contactInfoDictionary valueForKey:@"address"], [contactInfoDictionary valueForKey:@"zipCode"], [contactInfoDictionary valueForKey:@"city"]];
@@ -627,6 +739,7 @@
     
     return NO;
 }
+
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
 {
