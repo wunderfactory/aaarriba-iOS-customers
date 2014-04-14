@@ -34,7 +34,7 @@
 
 @implementation PricingViewController
 
-@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, addressBookStartController, addressBookEndController, addressContactStartString, addressStartEnd, contactsBeginButton, contactsEndButton, weightButton, weightScrollView;
+@synthesize zehnKGDictionary, zwanzigKGDictionary, dreissigKGDictionary, vierzigKGDictionary, locateStartButton, locateEndButton, packetRouteBeginTextField, packetRouteEndTextField, startLocationLatitude, startLocationLongitude, endLocationLatitude, endLocationLongitude, calculatePriceButton, kgInteger, priceLabel, packetSizeButton, addressBookStartController, addressBookEndController, addressContactStartString, addressStartEnd, contactsBeginButton, contactsEndButton, weightButton, weightScrollView, backgroundImageView;
 
 
 
@@ -174,6 +174,44 @@
     
     packetRouteBeginTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartAddress"];
     packetRouteEndTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndAddress"];
+    
+    
+    
+    
+    
+    
+    // MOTION EFFECT
+    
+    
+    // Max & Min values
+    CGFloat leftRightMin = -55.0f;
+    CGFloat leftRightMax = 55.0f;
+    
+    // UIMotionEffect
+    UIInterpolatingMotionEffect *leftRight = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    leftRight.minimumRelativeValue = @(leftRightMin);
+    leftRight.maximumRelativeValue = @(leftRightMax);
+    
+    
+    
+    
+    // Max & Min values
+    CGFloat upDfownMin = -35.0f;
+    CGFloat upDownhtMax = 35.0f;
+    
+    // UIMotionEffect
+    UIInterpolatingMotionEffect *upDown = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    leftRight.minimumRelativeValue = @(upDfownMin);
+    leftRight.maximumRelativeValue = @(upDownhtMax);
+    
+    
+    
+    
+    
+    UIMotionEffectGroup *motionEffectGroup = [[UIMotionEffectGroup alloc] init];
+    motionEffectGroup.motionEffects = @[leftRight, upDown];
+    
+    [backgroundImageView addMotionEffect:motionEffectGroup];
 }
 
 

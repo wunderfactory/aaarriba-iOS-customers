@@ -115,8 +115,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-WC-fl8">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-WC-fl8">
+                                <rect key="frame" x="-35" y="-35" width="383" height="644"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Von:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riB-S4-doh">
@@ -403,6 +403,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background" width="640" height="1136"/>
         <image name="adressbook.png" width="64" height="64"/>
         <image name="locate.png" width="32" height="32"/>
     </resources>
