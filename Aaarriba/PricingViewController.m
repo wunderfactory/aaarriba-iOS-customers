@@ -139,15 +139,6 @@
     
     
     
-    // Hide user location buttons
-    
-    [locateStartButton setHidden:YES];
-    [locateEndButton setHidden:YES];
-    
-    [contactsBeginButton setHidden:YES];
-    [contactsEndButton setHidden:YES];
-    
-    
     
     [priceLabel setHidden:YES];
     [calculatePriceButton setHidden:YES];
@@ -296,10 +287,13 @@
     
     
     
-    [locateStartButton setHidden:YES];
-    [locateEndButton setHidden:YES];
-    [contactsBeginButton setHidden:YES];
-    [contactsEndButton setHidden:YES];
+    [UIView animateWithDuration:1 animations:^{
+        locateStartButton.frame = CGRectMake(323, 242, 28, 28);
+        contactsBeginButton.frame = CGRectMake(-31, 242, 28, 28);
+        
+        locateEndButton.frame = CGRectMake(323, 242, 28, 28);
+        contactsEndButton.frame = CGRectMake(-31, 242, 28, 28);
+    }];
     
     
     
@@ -404,20 +398,28 @@
 
 - (IBAction)packetRouteBeginTextField:(id)sender {
     
-    [locateStartButton setHidden:NO];
-    [locateEndButton setHidden:YES];
+    [UIView animateWithDuration:1 animations:^{
+        contactsBeginButton.frame = CGRectMake(118, 242, 28, 28);
+        locateStartButton.frame = CGRectMake(169, 242, 28, 28);
+    }];
     
-    [contactsBeginButton setHidden:NO];
-    [contactsEndButton setHidden:YES];
+    /*[UIView animateWithDuration:2 animations:^{
+        locateEndButton.frame = CGRectMake(323, 242, 28, 28);
+        contactsEndButton.frame = CGRectMake(-31, 242, 28, 28);
+    }];*/
 }
 
 - (IBAction)packetRouteEndTextField:(id)sender {
     
-    [locateStartButton setHidden:YES];
-    [locateEndButton setHidden:NO];
+    [UIView animateWithDuration:1 animations:^{
+        contactsEndButton.frame = CGRectMake(118, 242, 28, 28);
+        locateEndButton.frame = CGRectMake(169, 242, 28, 28);
+    }];
     
-    [contactsBeginButton setHidden:YES];
-    [contactsEndButton setHidden:NO];
+    /*[UIView animateWithDuration:2 animations:^{
+        locateStartButton.frame = CGRectMake(323, 242, 28, 28);
+        contactsBeginButton.frame = CGRectMake(-31, 242, 28, 28);
+    }];*/
 }
 
 
@@ -432,6 +434,7 @@
     
     [self performSegueWithIdentifier:@"pricingToEndMapView" sender:self];
 }
+
 
 
 
