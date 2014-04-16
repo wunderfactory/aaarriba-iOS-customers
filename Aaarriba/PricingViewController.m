@@ -449,20 +449,10 @@
     
     NSDictionary *startDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"userStartLocationDict"];
     NSDictionary *endDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEndLocationDict"];
-    
-    
-    CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:[[startDictionary objectForKey:@"latitude"] doubleValue] longitude:[[startDictionary objectForKey:@"longitude"] doubleValue]];
-    CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[[endDictionary objectForKey:@"latitude"] doubleValue] longitude:[[endDictionary objectForKey:@"longitude"] doubleValue]];
+
     
     
     
-    
-    // distance is the beeline
-    
-    CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
-    
-    
-    /*
     float startLatitude = [[startDictionary objectForKey:@"latitude"] floatValue];
     float startLongitude = [[startDictionary objectForKey:@"longitude"] floatValue];
     
@@ -471,7 +461,10 @@
     
     
     
-    NSURL *googleDirectionsAPIURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/distancematrix/output?origins=%f,%f&destinations=%f,%f", startLatitude, startLongitude, endLatitude, endLongitude]];
+    
+    // Setting up URL with coordinates
+    
+    NSURL *googleDirectionsAPIURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/distancematrix/json?origins=%f,%f&destinations=%f,%f&sensor=false", startLatitude, startLongitude, endLatitude, endLongitude]];
     NSMutableURLRequest *googleDirectionsRequest = [NSMutableURLRequest requestWithURL:googleDirectionsAPIURL];
     [googleDirectionsRequest setHTTPMethod:@"GET"];
     [googleDirectionsRequest setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
@@ -481,19 +474,30 @@
     
     id jsonData = [NSJSONSerialization JSONObjectWithData:googleData options:0 error:nil];
     NSMutableDictionary *responseDict;
+    
+    // responseDict is the dict with route distance
     responseDict = jsonData;
     
-    NSLog(@"%@", googleDirectionsAPIURL);
-    NSLog(@"%@", responseDict);
-    */
+    
+    NSDictionary *rowsDict = [responseDict valueForKey:@"rows"];
+    NSDictionary *elementsDict = [rowsDict valueForKey:@"elements"];
+    NSDictionary *distanceDict = [elementsDict valueForKey:@"distance"];
     
     
     
+    NSString *distanceString = [[distanceDict valueForKey:@"text"] stringValue];
+    //[distanceString stringByReplacingOccurrencesOfString:@" km" withString:@""];
+    
+    //NSInteger distance = [distanceString integerValue];
+    
+    NSLog(@"%@", distanceString);
     
     
     // Detecting the distance between start position and end position
     // After that, the price gets calculated with the weight of its packet
     
+    
+    /*
     if (distance < 5000) {
         
         if (kgInteger < 11) {
@@ -520,7 +524,7 @@
     }
     else if (distance < 35000) {
         
-    }
+    }*/
     
     
     /*
