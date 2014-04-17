@@ -472,32 +472,22 @@
     NSURLResponse *googleResponse;
     NSData *googleData = [NSURLConnection sendSynchronousRequest:googleDirectionsRequest returningResponse:&googleResponse error:nil];
     
-    id jsonData = [NSJSONSerialization JSONObjectWithData:googleData options:0 error:nil];
-    NSMutableDictionary *responseDict;
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:googleData options:0 error:nil];
     
-    // responseDict is the dict with route distance
-    responseDict = jsonData;
+
+    NSString *distanceString = [[[[[[jsonData objectForKey:@"rows"] objectAtIndex:0] objectForKey:@"elements"] objectAtIndex:0] objectForKey:@"distance"] valueForKey:@"text"];
     
+    [distanceString stringByReplacingOccurrencesOfString:@" km" withString:@""];
     
-    NSDictionary *rowsDict = [responseDict valueForKey:@"rows"];
-    NSDictionary *elementsDict = [rowsDict valueForKey:@"elements"];
-    NSDictionary *distanceDict = [elementsDict valueForKey:@"distance"];
+    NSInteger distance = [distanceString integerValue];
     
     
-    
-    NSString *distanceString = [[distanceDict valueForKey:@"text"] stringValue];
-    //[distanceString stringByReplacingOccurrencesOfString:@" km" withString:@""];
-    
-    //NSInteger distance = [distanceString integerValue];
-    
-    NSLog(@"%@", distanceString);
     
     
     // Detecting the distance between start position and end position
     // After that, the price gets calculated with the weight of its packet
     
     
-    /*
     if (distance < 5000) {
         
         if (kgInteger < 11) {
@@ -524,7 +514,7 @@
     }
     else if (distance < 35000) {
         
-    }*/
+    }
     
     
     /*
